@@ -1,0 +1,729 @@
+{
+  "name": "project",
+  "className": "DataModel",
+  "filePaths": [
+    "default.project.json"
+  ],
+  "children": [
+    {
+      "name": "ReplicatedFirst",
+      "className": "ReplicatedFirst",
+      "children": [
+        {
+          "name": "Loader",
+          "className": "LocalScript",
+          "filePaths": [
+            "src/ReplicatedFirst/Loader.client.lua"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ReplicatedStorage",
+      "className": "ReplicatedStorage",
+      "children": [
+        {
+          "name": "Shared",
+          "className": "Folder",
+          "filePaths": [
+            "src/ReplicatedStorage/Shared/init.meta.json"
+          ],
+          "children": [
+            {
+              "name": "Hello",
+              "className": "ModuleScript",
+              "filePaths": [
+                "src/ReplicatedStorage/Shared/Hello.lua"
+              ]
+            },
+            {
+              "name": "UserDataRetrival",
+              "className": "ModuleScript",
+              "filePaths": [
+                "src/ReplicatedStorage/Shared/UserDataRetrival.lua"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ServerScriptService",
+      "className": "ServerScriptService",
+      "children": [
+        {
+          "name": "Primary Systems",
+          "className": "Folder",
+          "filePaths": [
+            "src/ServerScriptService/Primary Systems/init.meta.json"
+          ],
+          "children": [
+            {
+              "name": "Load in",
+              "className": "Folder",
+              "filePaths": [
+                "src/ServerScriptService/Primary Systems/Load in/init.meta.json"
+              ],
+              "children": [
+                {
+                  "name": "FirstTime",
+                  "className": "Script",
+                  "filePaths": [
+                    "src/ServerScriptService/Primary Systems/Load in/FirstTime.server.lua"
+                  ]
+                },
+                {
+                  "name": "LoadIN",
+                  "className": "Script",
+                  "filePaths": [
+                    "src/ServerScriptService/Primary Systems/Load in/LoadIN.server.lua"
+                  ]
+                },
+                {
+                  "name": "UserDataRetrival",
+                  "className": "ModuleScript",
+                  "filePaths": [
+                    "src/ServerScriptService/Primary Systems/Load in/UserDataRetrival.lua"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Script",
+          "className": "Script",
+          "filePaths": [
+            "src/ServerScriptService/Script.server.lua"
+          ]
+        },
+        {
+          "name": "Server",
+          "className": "Script",
+          "filePaths": [
+            "src/ServerScriptService/Server.server.lua"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ServerStorage",
+      "className": "ServerStorage",
+      "children": [
+        {
+          "name": "DATATEMPS",
+          "className": "ModuleScript",
+          "filePaths": [
+            "src/ServerStorage/DATATEMPS.lua"
+          ]
+        },
+        {
+          "name": "Plot Asignal",
+          "className": "ModuleScript",
+          "filePaths": [
+            "src/ServerStorage/Plot Asignal.lua"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "StarterGui",
+      "className": "StarterGui",
+      "children": [
+        {
+          "name": "MainMenu",
+          "className": "ScreenGui",
+          "filePaths": [
+            "src/StarterGui/MainMenu/init.meta.json"
+          ],
+          "children": [
+            {
+              "name": "Menu",
+              "className": "CanvasGroup",
+              "filePaths": [
+                "src/StarterGui/MainMenu/Menu/init.meta.json"
+              ],
+              "children": [
+                {
+                  "name": "Continue",
+                  "className": "Frame",
+                  "filePaths": [
+                    "src/StarterGui/MainMenu/Menu/Continue/init.meta.json"
+                  ],
+                  "children": [
+                    {
+                      "name": "TriggerPoint",
+                      "className": "ImageButton",
+                      "filePaths": [
+                        "src/StarterGui/MainMenu/Menu/Continue/TriggerPoint/init.meta.json"
+                      ],
+                      "children": [
+                        {
+                          "name": "Trigger",
+                          "className": "LocalScript",
+                          "filePaths": [
+                            "src/StarterGui/MainMenu/Menu/Continue/TriggerPoint/Trigger.client.lua"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "MenuToggle",
+                  "className": "ModuleScript",
+                  "filePaths": [
+                    "src/StarterGui/MainMenu/Menu/MenuToggle.lua"
+                  ]
+                },
+                {
+                  "name": "Saves",
+                  "className": "Frame",
+                  "filePaths": [
+                    "src/StarterGui/MainMenu/Menu/Saves/init.meta.json"
+                  ],
+                  "children": [
+                    {
+                      "name": "TriggerPoint",
+                      "className": "ImageButton",
+                      "filePaths": [
+                        "src/StarterGui/MainMenu/Menu/Saves/TriggerPoint/init.meta.json"
+                      ],
+                      "children": [
+                        {
+                          "name": "Trigger",
+                          "className": "LocalScript",
+                          "filePaths": [
+                            "src/StarterGui/MainMenu/Menu/Saves/TriggerPoint/Trigger.client.lua"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Settings",
+                  "className": "Frame",
+                  "filePaths": [
+                    "src/StarterGui/MainMenu/Menu/Settings/init.meta.json"
+                  ],
+                  "children": [
+                    {
+                      "name": "TriggerPoint",
+                      "className": "ImageButton",
+                      "filePaths": [
+                        "src/StarterGui/MainMenu/Menu/Settings/TriggerPoint/init.meta.json"
+                      ],
+                      "children": [
+                        {
+                          "name": "Trigger",
+                          "className": "LocalScript",
+                          "filePaths": [
+                            "src/StarterGui/MainMenu/Menu/Settings/TriggerPoint/Trigger.client.lua"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Sidebar",
+          "className": "ScreenGui",
+          "filePaths": [
+            "src/StarterGui/Sidebar/init.meta.json"
+          ],
+          "children": [
+            {
+              "name": "InvEx",
+              "className": "CanvasGroup",
+              "filePaths": [
+                "src/StarterGui/Sidebar/InvEx/init.meta.json"
+              ],
+              "children": [
+                {
+                  "name": "InvFrame",
+                  "className": "Frame",
+                  "filePaths": [
+                    "src/StarterGui/Sidebar/InvEx/InvFrame/init.meta.json"
+                  ],
+                  "children": [
+                    {
+                      "name": "CatSelect",
+                      "className": "CanvasGroup",
+                      "filePaths": [
+                        "src/StarterGui/Sidebar/InvEx/InvFrame/CatSelect/init.meta.json"
+                      ],
+                      "children": [
+                        {
+                          "name": "Bar",
+                          "className": "CanvasGroup",
+                          "filePaths": [
+                            "src/StarterGui/Sidebar/InvEx/InvFrame/CatSelect/Bar/init.meta.json"
+                          ],
+                          "children": [
+                            {
+                              "name": "Building",
+                              "className": "Frame",
+                              "filePaths": [
+                                "src/StarterGui/Sidebar/InvEx/InvFrame/CatSelect/Bar/Building/init.meta.json"
+                              ],
+                              "children": [
+                                {
+                                  "name": "AnimActivate",
+                                  "className": "LocalScript",
+                                  "filePaths": [
+                                    "src/StarterGui/Sidebar/InvEx/InvFrame/CatSelect/Bar/Building/AnimActivate.client.lua"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Cooling",
+                              "className": "Frame",
+                              "filePaths": [
+                                "src/StarterGui/Sidebar/InvEx/InvFrame/CatSelect/Bar/Cooling/init.meta.json"
+                              ],
+                              "children": [
+                                {
+                                  "name": "AnimActivate",
+                                  "className": "LocalScript",
+                                  "filePaths": [
+                                    "src/StarterGui/Sidebar/InvEx/InvFrame/CatSelect/Bar/Cooling/AnimActivate.client.lua"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Development",
+                              "className": "Frame",
+                              "filePaths": [
+                                "src/StarterGui/Sidebar/InvEx/InvFrame/CatSelect/Bar/Development/init.meta.json"
+                              ],
+                              "children": [
+                                {
+                                  "name": "AnimActivate",
+                                  "className": "LocalScript",
+                                  "filePaths": [
+                                    "src/StarterGui/Sidebar/InvEx/InvFrame/CatSelect/Bar/Development/AnimActivate.client.lua"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Networking",
+                              "className": "Frame",
+                              "filePaths": [
+                                "src/StarterGui/Sidebar/InvEx/InvFrame/CatSelect/Bar/Networking/init.meta.json"
+                              ],
+                              "children": [
+                                {
+                                  "name": "AnimActivate",
+                                  "className": "LocalScript",
+                                  "filePaths": [
+                                    "src/StarterGui/Sidebar/InvEx/InvFrame/CatSelect/Bar/Networking/AnimActivate.client.lua"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Power",
+                              "className": "Frame",
+                              "filePaths": [
+                                "src/StarterGui/Sidebar/InvEx/InvFrame/CatSelect/Bar/Power/init.meta.json"
+                              ],
+                              "children": [
+                                {
+                                  "name": "AnimActivate",
+                                  "className": "LocalScript",
+                                  "filePaths": [
+                                    "src/StarterGui/Sidebar/InvEx/InvFrame/CatSelect/Bar/Power/AnimActivate.client.lua"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Racks",
+                              "className": "Frame",
+                              "filePaths": [
+                                "src/StarterGui/Sidebar/InvEx/InvFrame/CatSelect/Bar/Racks/init.meta.json"
+                              ],
+                              "children": [
+                                {
+                                  "name": "AnimActivate",
+                                  "className": "LocalScript",
+                                  "filePaths": [
+                                    "src/StarterGui/Sidebar/InvEx/InvFrame/CatSelect/Bar/Racks/AnimActivate.client.lua"
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Store",
+              "className": "CanvasGroup",
+              "filePaths": [
+                "src/StarterGui/Sidebar/Store/init.meta.json"
+              ],
+              "children": [
+                {
+                  "name": "InvFrame",
+                  "className": "Frame",
+                  "filePaths": [
+                    "src/StarterGui/Sidebar/Store/InvFrame/init.meta.json"
+                  ],
+                  "children": [
+                    {
+                      "name": "CatSelect",
+                      "className": "CanvasGroup",
+                      "filePaths": [
+                        "src/StarterGui/Sidebar/Store/InvFrame/CatSelect/init.meta.json"
+                      ],
+                      "children": [
+                        {
+                          "name": "Bar",
+                          "className": "CanvasGroup",
+                          "filePaths": [
+                            "src/StarterGui/Sidebar/Store/InvFrame/CatSelect/Bar/init.meta.json"
+                          ],
+                          "children": [
+                            {
+                              "name": "Building",
+                              "className": "Frame",
+                              "filePaths": [
+                                "src/StarterGui/Sidebar/Store/InvFrame/CatSelect/Bar/Building/init.meta.json"
+                              ],
+                              "children": [
+                                {
+                                  "name": "AnimActivate",
+                                  "className": "LocalScript",
+                                  "filePaths": [
+                                    "src/StarterGui/Sidebar/Store/InvFrame/CatSelect/Bar/Building/AnimActivate.client.lua"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Cooling",
+                              "className": "Frame",
+                              "filePaths": [
+                                "src/StarterGui/Sidebar/Store/InvFrame/CatSelect/Bar/Cooling/init.meta.json"
+                              ],
+                              "children": [
+                                {
+                                  "name": "AnimActivate",
+                                  "className": "LocalScript",
+                                  "filePaths": [
+                                    "src/StarterGui/Sidebar/Store/InvFrame/CatSelect/Bar/Cooling/AnimActivate.client.lua"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Networking",
+                              "className": "Frame",
+                              "filePaths": [
+                                "src/StarterGui/Sidebar/Store/InvFrame/CatSelect/Bar/Networking/init.meta.json"
+                              ],
+                              "children": [
+                                {
+                                  "name": "AnimActivate",
+                                  "className": "LocalScript",
+                                  "filePaths": [
+                                    "src/StarterGui/Sidebar/Store/InvFrame/CatSelect/Bar/Networking/AnimActivate.client.lua"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Power",
+                              "className": "Frame",
+                              "filePaths": [
+                                "src/StarterGui/Sidebar/Store/InvFrame/CatSelect/Bar/Power/init.meta.json"
+                              ],
+                              "children": [
+                                {
+                                  "name": "AnimActivate",
+                                  "className": "LocalScript",
+                                  "filePaths": [
+                                    "src/StarterGui/Sidebar/Store/InvFrame/CatSelect/Bar/Power/AnimActivate.client.lua"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Racks",
+                              "className": "Frame",
+                              "filePaths": [
+                                "src/StarterGui/Sidebar/Store/InvFrame/CatSelect/Bar/Racks/init.meta.json"
+                              ],
+                              "children": [
+                                {
+                                  "name": "AnimActivate",
+                                  "className": "LocalScript",
+                                  "filePaths": [
+                                    "src/StarterGui/Sidebar/Store/InvFrame/CatSelect/Bar/Racks/AnimActivate.client.lua"
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "inv",
+              "className": "CanvasGroup",
+              "filePaths": [
+                "src/StarterGui/Sidebar/inv/init.meta.json"
+              ],
+              "children": [
+                {
+                  "name": "InvFrame",
+                  "className": "Frame",
+                  "filePaths": [
+                    "src/StarterGui/Sidebar/inv/InvFrame/init.meta.json"
+                  ],
+                  "children": [
+                    {
+                      "name": "CatSelect",
+                      "className": "CanvasGroup",
+                      "filePaths": [
+                        "src/StarterGui/Sidebar/inv/InvFrame/CatSelect/init.meta.json"
+                      ],
+                      "children": [
+                        {
+                          "name": "Bar",
+                          "className": "CanvasGroup",
+                          "filePaths": [
+                            "src/StarterGui/Sidebar/inv/InvFrame/CatSelect/Bar/init.meta.json"
+                          ],
+                          "children": [
+                            {
+                              "name": "Building",
+                              "className": "Frame",
+                              "filePaths": [
+                                "src/StarterGui/Sidebar/inv/InvFrame/CatSelect/Bar/Building/init.meta.json"
+                              ],
+                              "children": [
+                                {
+                                  "name": "AnimActivate",
+                                  "className": "LocalScript",
+                                  "filePaths": [
+                                    "src/StarterGui/Sidebar/inv/InvFrame/CatSelect/Bar/Building/AnimActivate.client.lua"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Cooling",
+                              "className": "Frame",
+                              "filePaths": [
+                                "src/StarterGui/Sidebar/inv/InvFrame/CatSelect/Bar/Cooling/init.meta.json"
+                              ],
+                              "children": [
+                                {
+                                  "name": "AnimActivate",
+                                  "className": "LocalScript",
+                                  "filePaths": [
+                                    "src/StarterGui/Sidebar/inv/InvFrame/CatSelect/Bar/Cooling/AnimActivate.client.lua"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Development",
+                              "className": "Frame",
+                              "filePaths": [
+                                "src/StarterGui/Sidebar/inv/InvFrame/CatSelect/Bar/Development/init.meta.json"
+                              ],
+                              "children": [
+                                {
+                                  "name": "AnimActivate",
+                                  "className": "LocalScript",
+                                  "filePaths": [
+                                    "src/StarterGui/Sidebar/inv/InvFrame/CatSelect/Bar/Development/AnimActivate.client.lua"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Networking",
+                              "className": "Frame",
+                              "filePaths": [
+                                "src/StarterGui/Sidebar/inv/InvFrame/CatSelect/Bar/Networking/init.meta.json"
+                              ],
+                              "children": [
+                                {
+                                  "name": "AnimActivate",
+                                  "className": "LocalScript",
+                                  "filePaths": [
+                                    "src/StarterGui/Sidebar/inv/InvFrame/CatSelect/Bar/Networking/AnimActivate.client.lua"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Power",
+                              "className": "Frame",
+                              "filePaths": [
+                                "src/StarterGui/Sidebar/inv/InvFrame/CatSelect/Bar/Power/init.meta.json"
+                              ],
+                              "children": [
+                                {
+                                  "name": "AnimActivate",
+                                  "className": "LocalScript",
+                                  "filePaths": [
+                                    "src/StarterGui/Sidebar/inv/InvFrame/CatSelect/Bar/Power/AnimActivate.client.lua"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Racks",
+                              "className": "Frame",
+                              "filePaths": [
+                                "src/StarterGui/Sidebar/inv/InvFrame/CatSelect/Bar/Racks/init.meta.json"
+                              ],
+                              "children": [
+                                {
+                                  "name": "AnimActivate",
+                                  "className": "LocalScript",
+                                  "filePaths": [
+                                    "src/StarterGui/Sidebar/inv/InvFrame/CatSelect/Bar/Racks/AnimActivate.client.lua"
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "TopBar",
+          "className": "ScreenGui",
+          "filePaths": [
+            "src/StarterGui/TopBar/init.meta.json"
+          ],
+          "children": [
+            {
+              "name": "TopBar",
+              "className": "Frame",
+              "filePaths": [
+                "src/StarterGui/TopBar/TopBar/init.meta.json"
+              ],
+              "children": [
+                {
+                  "name": "Center",
+                  "className": "Frame",
+                  "filePaths": [
+                    "src/StarterGui/TopBar/TopBar/Center/init.meta.json"
+                  ],
+                  "children": [
+                    {
+                      "name": "Center",
+                      "className": "Frame",
+                      "filePaths": [
+                        "src/StarterGui/TopBar/TopBar/Center/Center/init.meta.json"
+                      ],
+                      "children": [
+                        {
+                          "name": "Building",
+                          "className": "Frame",
+                          "filePaths": [
+                            "src/StarterGui/TopBar/TopBar/Center/Center/Building/init.meta.json"
+                          ],
+                          "children": [
+                            {
+                              "name": "LocalScript",
+                              "className": "LocalScript",
+                              "filePaths": [
+                                "src/StarterGui/TopBar/TopBar/Center/Center/Building/LocalScript.client.lua"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "StarterPack",
+      "className": "StarterPack",
+      "children": [
+        {
+          "name": "ModuleScript",
+          "className": "ModuleScript",
+          "filePaths": [
+            "src/StarterPack/ModuleScript.lua"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "StarterPlayer",
+      "className": "StarterPlayer",
+      "children": [
+        {
+          "name": "StarterPlayerScripts",
+          "className": "StarterPlayerScripts",
+          "children": [
+            {
+              "name": "Client",
+              "className": "LocalScript",
+              "filePaths": [
+                "src/StarterPlayer/StarterPlayerScripts/Client.client.lua"
+              ]
+            },
+            {
+              "name": "LocalScript",
+              "className": "LocalScript",
+              "filePaths": [
+                "src/StarterPlayer/StarterPlayerScripts/LocalScript.client.lua"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "TestService",
+      "className": "TestService",
+      "children": [
+        {
+          "name": "LuauLSP_Settings",
+          "className": "ModuleScript",
+          "filePaths": [
+            "src/TestService/LuauLSP_Settings.lua"
+          ]
+        }
+      ]
+    }
+  ]
+}
