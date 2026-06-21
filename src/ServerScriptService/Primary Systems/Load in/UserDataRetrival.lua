@@ -1,32 +1,37 @@
-local Players = game:GetService("Players")
-local Localplayer = Players.LocalPlayer
 local Datastore = game:GetService("DataStoreService")
-local Userdata = Datastore:GetDataStore("UserData")''
+local ServerScriptService = game:GetService("ServerScriptService")
+local PrimarySystems = ServerScriptService:WaitForChild("Primary Systems")
+local LoadIn = PrimarySystems["Load in"]
+local Userdata = Datastore:GetDataStore("UserData")
+local FirstTime = require(LoadIn.FirstTime)
 
-local UserdataTEMP = require(game.ServerStorage.DATATEMPS)
+local error = false
+local new = false
+
 local added = false
 
 local module = {}
 
-function module.get ()
-	local PlayerSTR = tostring(Localplayer.UserId)
-	local Userinfo = Userdata:GetAsync(PlayerSTR)
-
+function module.get(Player)
+	local Userinfo = Userdata:GetAsync(Player)
 
 	if Userinfo == nil then
 		print("nah nada")
-		game.ReplicatedStorage.NOOBALERT:Invoke(PlayerSTR, added)
+		new = true
+
+		FirstTime.new(Player, added)
+
+		if FirstTime.new(added) == true then
+			print("yay")
+			return new
+		else
+			error = true
+			return error
+		end
 
 	else
-		print("si si si señor")
-		print(Userinfo)
-		module.PlayerInfo = Userinfo
+		return Userinfo
 	end
-	print(added)
-	
 end
-
-
-
 
 return module

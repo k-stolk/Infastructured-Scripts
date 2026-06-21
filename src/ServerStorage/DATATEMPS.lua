@@ -1,5 +1,6 @@
-local Playerdata = {
-	
+local Templates = {}
+
+Templates.UserdataTEMP = {
 	PlayerInfo = {
 		Username = "",
 		FirstJoin = "",
@@ -40,15 +41,14 @@ local Playerdata = {
 		}
 		
 		
-		
-		
+
 	},
-	
+
 	AdditionalInfo = {
 		MessageFromVeryCoolPerson = "WAZAHHHHHHHH"
 	}
-	
+
 }
 
 
-return Playerdata
+return Templates

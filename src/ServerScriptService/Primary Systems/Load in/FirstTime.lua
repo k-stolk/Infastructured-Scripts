@@ -3,15 +3,21 @@ local Templates = require(TemplatesINTS)
 local Datastore =  game:GetService("DataStoreService")
 local Userdata = Datastore:GetDataStore("UserData")
 
-game.ReplicatedStorage.NOOBALERT.OnInvoke = function(Player, added)
+local module = {}
+
+function module.new(Player, added)
 	local Userinfo = Userdata:GetAsync(Player)
-	local UserdataTemp = Templates.Userdata
+	local UserdataTEMP = Templates.UserdataTEMP
 	
 	if Userinfo == nil then
 		added = true
-		Userdata:SetAsync(Player, UserdataTemp)
+		Userdata:SetAsync(Player, UserdataTEMP)
 	else
 		added = false
 	end
+	
 	return Player, added
+
 end
+
+return module
