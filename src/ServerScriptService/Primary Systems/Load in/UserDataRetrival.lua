@@ -24,14 +24,14 @@ function module.get(player)
 
 		if FirstTime.new(added) == true then
 			print("yay")
-			return new
+			return module
 		else
 			passed = tostring("Script: "..script.Name..".  Couldn't add userdata")
-			return passed
+			return module
 		end
 
 	else
-		return Userinfo
+		return module
 	end
 end
 

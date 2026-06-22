@@ -122,7 +122,7 @@ if loadingScreen then
 	local RETURNED = {ServerLoader:InvokeServer()}
 	print(RETURNED)
 	print(RETURNED[1])
-
+	print("lolz")
 	--workspace.k_stolk.Head.CFrame.char
 
 	BgReveal:Play()
@@ -167,21 +167,21 @@ if loadingScreen then
 
 			loadingScreen:Destroy()
 			script:Destroy()
-		elseif RETURNED[1] == string then
+		elseif typeof(RETURNED[1]) == "string" then
 			print("LOL WTF HAPPEND")
 			loadingScreen.Preloading.Frame.DevMode.Visible = false
 			loadingScreen.Preloading.Frame.Error.Visible = true
 			loadingScreen.Preloading.Frame.Loader.Visible = false
 			loadingScreen.Preloading.Frame.Error.Visible = true
 			loadingScreen.Preloading.Frame.DEBUG.Visible = true
-			loadingScreen.Preloading.Frame.DEBUG.Text = RETURNED[1]
+			loadingScreen.Preloading.Frame.DEBUG.Text = "Debug: "..RETURNED[1]
 		elseif RETURNED[1] == nil then
 			loadingScreen.Preloading.Frame.DevMode.Visible = false
 			loadingScreen.Preloading.Frame.Error.Visible = true
 			loadingScreen.Preloading.Frame.Loader.Visible = false
 			loadingScreen.Preloading.Frame.Error.Visible = true
 			loadingScreen.Preloading.Frame.DEBUG.Visible = true
-			loadingScreen.Preloading.Frame.DEBUG.Text = "I have no idea what happend..., this is what passed said: "..tostring(RETURNED[1])
+			loadingScreen.Preloading.Frame.DEBUG.Text = "Debug: I have no idea what happend..., this is what passed said: "..tostring(RETURNED[1])
 		end
 	end
 end

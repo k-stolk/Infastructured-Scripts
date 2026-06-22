@@ -9,16 +9,15 @@ local ended = false
 
 ServerLoader.OnServerInvoke = function(Player, Passed)
 	print("loadIn")
+	local Data = { UserDataRetrival.get(Player) }
 
-	UserDataRetrival.get(Player)
-
-	if UserDataRetrival.get(Passed) then
+	if Data[1] then
 		print("PASSED")
 		Passed = tostring("Script: " .. script.Name .. ".  UserDataRetrival returned an error")
 
 		print("well i fired")
 		return Passed
-	elseif UserDataRetrival.get(Passed) == string then
+	elseif Data[1] == string then
 		print("NOT PASSED")
 
 		return Passed
@@ -27,12 +26,4 @@ ServerLoader.OnServerInvoke = function(Player, Passed)
 	return Passed
 end
 
-ServerLoader.OnServerInvoke = function(Player, Passed)
-	task.wait(20)
-	if ended == false then
-		Passed = tostring("Script: " .. script.Name .. ".  TIMEOUT")
-		print("TIMEOUT")
-		return Passed,"lol"
-	end
-	return true
-end
+--
