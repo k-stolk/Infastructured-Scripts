@@ -66,6 +66,13 @@
               ],
               "children": [
                 {
+                  "name": "FirstTime",
+                  "className": "ModuleScript",
+                  "filePaths": [
+                    "src/ServerScriptService/Primary Systems/Load in/FirstTime.lua"
+                  ]
+                },
+                {
                   "name": "LoadIN",
                   "className": "Script",
                   "filePaths": [
@@ -77,13 +84,6 @@
                   "className": "ModuleScript",
                   "filePaths": [
                     "src/ServerScriptService/Primary Systems/Load in/UserDataRetrival.lua"
-                  ]
-                },
-                {
-                  "name": "FirstTime",
-                  "className": "ModuleScript",
-                  "filePaths": [
-                    "src/ServerScriptService/Primary Systems/Load in/FirstTime.lua"
                   ]
                 }
               ]

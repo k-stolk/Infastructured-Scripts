@@ -14,12 +14,12 @@ local playerGui = Players.LocalPlayer:WaitForChild("PlayerGui")
 local workspaceplayerhead = workspace:WaitForChild(tostring(player)).Head
 local loadingScreen = ReplicatedFirst:FindFirstChild("Preloading")
 local menu = require(game.StarterGui.MainMenu.Menu.MenuToggle)
-local ServerLoader = ReplicatedStorage:WaitForChild("Primary Systems").Loader
+local PrimarySystems = ReplicatedStorage:WaitForChild("Primary Systems")
+local ServerLoader = PrimarySystems:WaitForChild("Loader")
 
 --Variables
 local DPRESS = 0
 local Loaded = false
-local Passed = true
 
 --Tweeninfo
 local BarTween = TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
@@ -36,8 +36,6 @@ local ShowTxtTwn = Tween:Create(loadingScreen.Preloading.Frame.Loader, BarTween,
 --Start of script
 
 Tween:Create(loadingScreen.Preloading.Frame.Loader, FrameTween, { TextTransparency = 0 }):Play()
-
-
 
 UIS.InputBegan:Connect(function(input)
 	if input.KeyCode == Enum.KeyCode.D and Loaded == false then
@@ -111,6 +109,7 @@ local Loadinganim = coroutine.create(function()
 end)
 
 if loadingScreen then
+	print("wazah")
 	loadingScreen.IgnoreGuiInset = true
 	loadingScreen.Parent = playerGui
 
@@ -119,17 +118,17 @@ if loadingScreen then
 	coroutine.resume(camerapos)
 	coroutine.resume(Loadinganim)
 
-	ServerLoader:InvokeServer(PlayerID)
+	print(PlayerID)
+	local RETURNED = {ServerLoader:InvokeServer()}
+	print(RETURNED)
+	print(RETURNED[1])
 
 	--workspace.k_stolk.Head.CFrame.char
-
-	if not game:IsLoaded() then
-		game.Loaded:Wait()
-	end
 
 	BgReveal:Play()
 
 	task.wait(5)
+	print("waited")
 	if DPRESS == 3 then
 		player.Character:MoveTo(Vector3.new(96.368, 940.017, -177.03))
 		task.wait(3)
@@ -141,8 +140,8 @@ if loadingScreen then
 		task.wait(3)
 		camera.CameraType = Enum.CameraType.Custom
 	else
-
-		if ServerLoader:InvokeServer(Passed) == true then
+		if RETURNED[1] == true then
+			print("NICE")
 			loadingScreen.Preloading.Frame.DevMode.Visible = false
 			loadingScreen.Preloading.Frame.Error.Visible = false
 
@@ -168,9 +167,21 @@ if loadingScreen then
 
 			loadingScreen:Destroy()
 			script:Destroy()
-		elseif ServerLoader:InvokeServer(Passed) == false then
+		elseif RETURNED[1] == string then
+			print("LOL WTF HAPPEND")
 			loadingScreen.Preloading.Frame.DevMode.Visible = false
 			loadingScreen.Preloading.Frame.Error.Visible = true
+			loadingScreen.Preloading.Frame.Loader.Visible = false
+			loadingScreen.Preloading.Frame.Error.Visible = true
+			loadingScreen.Preloading.Frame.DEBUG.Visible = true
+			loadingScreen.Preloading.Frame.DEBUG.Text = RETURNED[1]
+		elseif RETURNED[1] == nil then
+			loadingScreen.Preloading.Frame.DevMode.Visible = false
+			loadingScreen.Preloading.Frame.Error.Visible = true
+			loadingScreen.Preloading.Frame.Loader.Visible = false
+			loadingScreen.Preloading.Frame.Error.Visible = true
+			loadingScreen.Preloading.Frame.DEBUG.Visible = true
+			loadingScreen.Preloading.Frame.DEBUG.Text = "I have no idea what happend..., this is what passed said: "..tostring(RETURNED[1])
 		end
 	end
 end

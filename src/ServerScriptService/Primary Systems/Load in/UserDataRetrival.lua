@@ -5,28 +5,29 @@ local LoadIn = PrimarySystems["Load in"]
 local Userdata = Datastore:GetDataStore("UserData")
 local FirstTime = require(LoadIn.FirstTime)
 
-local error = false
+local passed = true
 local new = false
 
 local added = false
 
 local module = {}
 
-function module.get(Player)
-	local Userinfo = Userdata:GetAsync(Player)
+function module.get(player)
+	local Userinfo = Userdata:GetAsync(player)
 
 	if Userinfo == nil then
 		print("nah nada")
+		print(Userinfo)
 		new = true
 
-		FirstTime.new(Player, added)
+		FirstTime.new(player, added)
 
 		if FirstTime.new(added) == true then
 			print("yay")
 			return new
 		else
-			error = true
-			return error
+			passed = tostring("Script: "..script.Name..".  Couldn't add userdata")
+			return passed
 		end
 
 	else
