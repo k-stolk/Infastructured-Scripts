@@ -118,11 +118,10 @@ if loadingScreen then
 	coroutine.resume(camerapos)
 	coroutine.resume(Loadinganim)
 
-	print(PlayerID)
-	local RETURNED = {ServerLoader:InvokeServer()}
+	print("Pre-Serverloader Fire" .. tostring(PlayerID))
+	local RETURNED = { ServerLoader:InvokeServer() }
+	print("Post-Serverloader Fire, Serverloader returned:" .. tostring(RETURNED))
 	print(RETURNED)
-	print(RETURNED[1])
-	print("lolz")
 	--workspace.k_stolk.Head.CFrame.char
 
 	BgReveal:Play()
@@ -141,32 +140,52 @@ if loadingScreen then
 		camera.CameraType = Enum.CameraType.Custom
 	else
 		if RETURNED[1] == true then
-			print("NICE")
-			loadingScreen.Preloading.Frame.DevMode.Visible = false
-			loadingScreen.Preloading.Frame.Error.Visible = false
+			if RETURNED[2] == "New Player!" then
+				print("Hello new player :D, now get out of the console and play the game i spend a year making")
+				loadingScreen.Preloading.Frame.DevMode.Visible = false
+				loadingScreen.Preloading.Frame.Error.Visible = false
 
-			coroutine.close(Loadinganim)
-			coroutine.close(camerapos)
+				coroutine.close(Loadinganim)
+				coroutine.close(camerapos)
 
-			Loaded = true
+				Loaded = true
 
-			HideTxtTwn:Play()
+				HideTxtTwn:Play()
 
-			task.wait(1)
-			loadingScreen.Preloading.Frame.Loader.Text = "Welcome, " .. tostring(Players.LocalPlayer.Name)
+				task.wait(1)
+				loadingScreen.Preloading.Frame.Loader.Text = "Welcome, " .. tostring(Players.LocalPlayer.Name)
 
-			ShowTxtTwn:Play()
+				ShowTxtTwn:Play()
 
-			task.wait(3)
+				task.wait(3)
 
-			LSTweenOut:Play()
+				LSTweenOut:Play()
 
-			menu.show()
+				menu.show()
 
-			task.wait(5)
+				task.wait(5)
 
-			loadingScreen:Destroy()
-			script:Destroy()
+				loadingScreen:Destroy()
+				script:Destroy()
+			elseif not RETURNED[2] then
+				print(RETURNED[2])
+				loadingScreen.Preloading.Frame.DevMode.Visible = false
+				loadingScreen.Preloading.Frame.Error.Visible = false
+
+				coroutine.close(Loadinganim)
+				coroutine.close(camerapos)
+
+				Loaded = true
+
+				LSTweenOut:Play()
+
+				menu.show()
+
+				task.wait(5)
+
+				loadingScreen:Destroy()
+				script:Destroy()
+			end
 		elseif typeof(RETURNED[1]) == "string" then
 			print("LOL WTF HAPPEND")
 			loadingScreen.Preloading.Frame.DevMode.Visible = false
@@ -174,14 +193,30 @@ if loadingScreen then
 			loadingScreen.Preloading.Frame.Loader.Visible = false
 			loadingScreen.Preloading.Frame.Error.Visible = true
 			loadingScreen.Preloading.Frame.DEBUG.Visible = true
-			loadingScreen.Preloading.Frame.DEBUG.Text = "Debug: "..RETURNED[1]
+			loadingScreen.Preloading.Frame.DEBUG.Text = "Debug: " .. RETURNED[1]
+		elseif RETURNED[1] == false then
+			loadingScreen.Preloading.Frame.DevMode.Visible = false
+			loadingScreen.Preloading.Frame.Error.Visible = true
+			loadingScreen.Preloading.Frame.Loader.Visible = false
+			loadingScreen.Preloading.Frame.Error.Visible = true
+			loadingScreen.Preloading.Frame.DEBUG.Visible = true
+			loadingScreen.Preloading.Frame.DEBUG.Text = "Debug: GudService was being nonchalant and just said false"
 		elseif RETURNED[1] == nil then
 			loadingScreen.Preloading.Frame.DevMode.Visible = false
 			loadingScreen.Preloading.Frame.Error.Visible = true
 			loadingScreen.Preloading.Frame.Loader.Visible = false
 			loadingScreen.Preloading.Frame.Error.Visible = true
 			loadingScreen.Preloading.Frame.DEBUG.Visible = true
-			loadingScreen.Preloading.Frame.DEBUG.Text = "Debug: I have no idea what happend..., this is what passed said: "..tostring(RETURNED[1])
+			loadingScreen.Preloading.Frame.DEBUG.Text =
+				"Debug: I have no idea what happend, cuz stupid GudService said NOTHING"
+		else
+			loadingScreen.Preloading.Frame.DevMode.Visible = false
+			loadingScreen.Preloading.Frame.Error.Visible = true
+			loadingScreen.Preloading.Frame.Loader.Visible = false
+			loadingScreen.Preloading.Frame.Error.Visible = true
+			loadingScreen.Preloading.Frame.DEBUG.Visible = true
+			loadingScreen.Preloading.Frame.DEBUG.Text = "Debug: I have no idea what happend..., this is what GudService said: "
+				.. tostring(RETURNED[1])
 		end
 	end
 end
