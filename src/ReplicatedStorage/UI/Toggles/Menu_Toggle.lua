@@ -96,7 +96,7 @@ function module.hide ()
 	BGRevealTwn:Play()
 	QuickOUTTWEENR:Play()
 	
-	OutAnim:Play()
+	--OutAnim:Play()
 	Music.Playing = true
 	AudioOutTween:Play()
 

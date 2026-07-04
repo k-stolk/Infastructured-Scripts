@@ -3,7 +3,7 @@ local Tween = game:GetService("TweenService")
 
 local PlayerGui = Player.PlayerGui
 
-local Current = PlayerGui.TopBar.TopBar.Center.Center.Building
+local Current = PlayerGui:WaitForChild("TopBar").TopBar.Center.Center.Building
 
 local Inventory = PlayerGui.Sidebar.inv
 
@@ -17,7 +17,7 @@ local TweenInfuh = TweenInfo.new(0.5,Enum.EasingStyle.Quart,Enum.EasingDirection
 local TweenInfuhHVR = TweenInfo.new(0.1,Enum.EasingStyle.Quad,Enum.EasingDirection.In)
 local state = false
 
-script.Parent.Button.MouseEnter:Connect(function()
+Current.Button.MouseEnter:Connect(function()
 	
 	if state == false then
 		
@@ -41,7 +41,7 @@ script.Parent.Button.MouseEnter:Connect(function()
 	
 end)
 
-script.Parent.Button.MouseLeave:Connect(function()
+Current.Button.MouseLeave:Connect(function()
 	
 	if state == false then
 
@@ -59,7 +59,7 @@ script.Parent.Button.MouseLeave:Connect(function()
 
 end)
 
-script.Parent.Button.MouseButton1Up:Connect(function()
+Current.Button.MouseButton1Up:Connect(function()
 	
 	UpSound.TimePosition = 0
 	UpSound.Playing = true
@@ -84,7 +84,7 @@ script.Parent.Button.MouseButton1Up:Connect(function()
 	end
 end)
 
-script.Parent.Button.MouseButton1Down:Connect(function()
+Current.Button.MouseButton1Down:Connect(function()
 	
 	DwnSound.TimePosition = 0
 	DwnSound.Playing = true
