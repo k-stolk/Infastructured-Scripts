@@ -189,10 +189,10 @@
                       ]
                     },
                     {
-                      "name": "Settings",
+                      "name": "MenuBypass",
                       "className": "LocalScript",
                       "filePaths": [
-                        "src/StarterPlayer/StarterPlayerScripts/UI/Menu/Settings.client.lua"
+                        "src/StarterPlayer/StarterPlayerScripts/UI/Menu/MenuBypass.client.lua"
                       ]
                     },
                     {
@@ -200,6 +200,13 @@
                       "className": "LocalScript",
                       "filePaths": [
                         "src/StarterPlayer/StarterPlayerScripts/UI/Menu/Saves.client.lua"
+                      ]
+                    },
+                    {
+                      "name": "Settings",
+                      "className": "LocalScript",
+                      "filePaths": [
+                        "src/StarterPlayer/StarterPlayerScripts/UI/Menu/Settings.client.lua"
                       ]
                     }
                   ]
