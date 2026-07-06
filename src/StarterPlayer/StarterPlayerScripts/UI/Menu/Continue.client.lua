@@ -74,6 +74,6 @@ Menu.Continue.TriggerPoint.MouseButton1Up:Connect(function()
 		HvrSTween:Play()
 		HvrStrokeSTween:Play()
 		HvrTextSTween:Play()
-		MenuToggle.hide()
+		MenuToggle.hide(86400)
 	end
 end)

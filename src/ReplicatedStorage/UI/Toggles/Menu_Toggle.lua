@@ -1,8 +1,7 @@
 local module = {}
 
-
-
 --Services
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Tween = game:GetService("TweenService")
 local Players = game:GetService("Players")
 
@@ -13,40 +12,52 @@ local PlayerGUI = Player.PlayerGui
 local MMenu = PlayerGUI.MainMenu
 local MMMenu = MMenu.Menu
 local Music = game.SoundService:WaitForChild("MenuMusic")
-
-
+local player = game:GetService("Players").LocalPlayer
+local camera = workspace.CurrentCamera
+local Menu = player.PlayerGui:WaitForChild("MainMenu").BG
+local Top_bar_Toggle = require(ReplicatedStorage.UI.Toggles.Top_bar_Toggle)
 
 --Tween Info
 
-local CloudTween = TweenInfo.new(15,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut)
-local CameraTween = TweenInfo.new(60,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut)
-local QuickINTWEEN = TweenInfo.new(0.5,Enum.EasingStyle.Quint,Enum.EasingDirection.In)
-local InAnimINF = TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.In)
+local CloudTween = TweenInfo.new(15, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut)
+local CameraTween = TweenInfo.new(60, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut)
+local CameraTweenOUT = TweenInfo.new(2.5, Enum.EasingStyle.Quart, Enum.EasingDirection.InOut)
+local QuickINTWEEN = TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.In)
+local InAnimINF = TweenInfo.new(1, Enum.EasingStyle.Quint, Enum.EasingDirection.In)
 
 --Tweens
 
-local QuickINTWEENR = Tween:Create(MMMenu,QuickINTWEEN,{GroupTransparency = 0})
-local QuickOUTTWEENR = Tween:Create(MMMenu,QuickINTWEEN,{GroupTransparency = 1})
-local AudioInTween = Tween:Create(Music,InAnimINF,{PlaybackSpeed = 0.97})
-local AudioOutTween = Tween:Create(Music,InAnimINF,{PlaybackSpeed = 0})
-local CloudINTWEEN = Tween:Create(MMMenu.Logo.Cloud,CloudTween,{Size = UDim2.new(0.877, 0,1.38, 0)})
-local CloudOUTTWEEN = Tween:Create(MMMenu.Logo.Cloud,CloudTween,{Size = UDim2.new(0.457, 0,1.38, 0)})
-local BGRevealTwn = Tween:Create(MMenu.BG,InAnimINF,{BackgroundTransparency = 0})
-local BGHideTwn = Tween:Create(MMenu.BG,InAnimINF,{BackgroundTransparency = 1})
-local InAnim = Tween:Create(Camera,InAnimINF,{CFrame = CFrame.new(501.86, 108.826, -968.814) * CFrame.fromEulerAnglesXYZ(math.rad(-3.678), math.rad(151.875), 0)})
-local OutAnim = Tween:Create(Camera,InAnimINF,{CFrame = CFrame.new(157.05, 40.139, 636.601) * CFrame.fromEulerAnglesXYZ(math.rad(-4.825), math.rad(25.252), 0)})
+local QuickINTWEENR = Tween:Create(MMMenu, QuickINTWEEN, { GroupTransparency = 0 })
+local QuickOUTTWEENR = Tween:Create(MMMenu, QuickINTWEEN, { GroupTransparency = 1 })
+local AudioInTween = Tween:Create(Music, InAnimINF, { PlaybackSpeed = 0.97 })
+local AudioOutTween = Tween:Create(Music, InAnimINF, { PlaybackSpeed = 0 })
+local CloudINTWEEN = Tween:Create(MMMenu.Logo.Cloud, CloudTween, { Size = UDim2.new(0.877, 0, 1.38, 0) })
+local CloudOUTTWEEN = Tween:Create(MMMenu.Logo.Cloud, CloudTween, { Size = UDim2.new(0.457, 0, 1.38, 0) })
+local BGRevealTwn = Tween:Create(MMenu.BG, InAnimINF, { BackgroundTransparency = 0 })
+local BGHideTwn = Tween:Create(MMenu.BG, InAnimINF, { BackgroundTransparency = 1 })
+local InAnim = Tween:Create(Camera, InAnimINF, {
+	CFrame = CFrame.new(501.86, 108.826, -968.814) * CFrame.fromEulerAnglesXYZ(math.rad(-3.678), math.rad(151.875), 0),
+})
+local CameraOutTwn = Tween:Create(camera, CameraTweenOUT, { CFrame = CFrame.new(70.344, 14.464, 522.401) })
+local MenuFrameTween = TweenInfo.new(1, Enum.EasingStyle.Quart, Enum.EasingDirection.InOut)
 
+local OutAnim = Tween:Create(
+	Camera,
+	InAnimINF,
+	{ CFrame = CFrame.new(157.05, 40.139, 636.601) * CFrame.fromEulerAnglesXYZ(math.rad(-4.825), math.rad(25.252), 0) }
+)
 
-local DopamineTweenOUT = Tween:Create(Camera,CameraTween,{
-	CFrame = CFrame.new(-423.882, 89.952, -884.297) * CFrame.fromEulerAnglesXYZ(math.rad(-1.673), math.rad(-155.126), 0)
+local DopamineTweenOUT = Tween:Create(Camera, CameraTween, {
+	CFrame = CFrame.new(-423.882, 89.952, -884.297)
+		* CFrame.fromEulerAnglesXYZ(math.rad(-1.673), math.rad(-155.126), 0),
 })
 
-local DopamineTweenOUT2 = Tween:Create(Camera,CameraTween,{
-	CFrame = CFrame.new(157.05, 40.139, 636.601) * CFrame.fromEulerAnglesXYZ(math.rad(-4.825), math.rad(25.252), 0)
+local DopamineTweenOUT2 = Tween:Create(Camera, CameraTween, {
+	CFrame = CFrame.new(157.05, 40.139, 636.601) * CFrame.fromEulerAnglesXYZ(math.rad(-4.825), math.rad(25.252), 0),
 })
 
-local DopamineTweenIN = Tween:Create(Camera,CameraTween,{
-	CFrame = CFrame.new(501.86, 108.826, -968.814) * CFrame.fromEulerAnglesXYZ(math.rad(-3.678), math.rad(151.875), 0)
+local DopamineTweenIN = Tween:Create(Camera, CameraTween, {
+	CFrame = CFrame.new(501.86, 108.826, -968.814) * CFrame.fromEulerAnglesXYZ(math.rad(-3.678), math.rad(151.875), 0),
 })
 
 -- Coroutines
@@ -77,35 +88,42 @@ end)
 
 Camera.CameraType = Enum.CameraType.Scriptable
 
-function module.show ()
+function module.show()
 	BGHideTwn:Play()
 	InAnim:Play()
 	QuickINTWEENR:Play()
 	Music.Playing = true
 	AudioInTween:Play()
 
-
-	wait(1)
-
+	task.wait(1)
 
 	coroutine.resume(CloudDance)
 	coroutine.resume(DopamineCamera)
 end
 
-function module.hide ()
-	BGRevealTwn:Play()
-	QuickOUTTWEENR:Play()
-	
-	--OutAnim:Play()
-	Music.Playing = true
-	AudioOutTween:Play()
+function module.hide(waitT)
+	player.Character:MoveTo(Vector3.new(70.344, 14.464, 512.401))
+	print("bi")
+	Tween:Create(camera, CameraTween, { CFrame = CFrame.new(70.344, 14.464, 522.401) }):Play()
 
-
-	wait(1)
-
-
+	CameraOutTwn:Play()
 	coroutine.close(CloudDance)
 	coroutine.close(DopamineCamera)
+	AudioOutTween:Play()
+	BGRevealTwn:Play()
+
+	QuickOUTTWEENR:Play()
+
+	task.wait(waitT)
+
+	player.Character:MoveTo(Vector3.new(70.344, 34.464, 512.401))
+	Tween:Create(Menu, MenuFrameTween, { BackgroundTransparency = 1 }):Play()
+	task.wait(1)
+	camera.CameraType = Enum.CameraType.Custom
+	Top_bar_Toggle.Show()
+	Music.Playing = false
+
+	print("yas")
 end
 
 return module
