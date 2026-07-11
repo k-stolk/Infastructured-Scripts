@@ -4,8 +4,8 @@
       "type": "luau",
       "request": "launch",
       "name": "launch luau debugger",
-      "program": "${workspaceFolder}/test.lua",
+      "program": "${workspaceFolder}/main.lua",
       "port": 58000
-    }
+    },
   ]
 }

@@ -7,7 +7,6 @@ local UIS = game:GetService("UserInputService")
 local Tween = game:GetService("TweenService")
 
 --gay
-
 --Infinite yield generators
 local player = Players.LocalPlayer
 local PlayerID = tostring(player.UserId)

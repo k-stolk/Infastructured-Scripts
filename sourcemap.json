@@ -208,6 +208,13 @@
                       "filePaths": [
                         "src/StarterPlayer/StarterPlayerScripts/UI/Menu/Settings.client.lua"
                       ]
+                    },
+                    {
+                      "name": "lol",
+                      "className": "LocalScript",
+                      "filePaths": [
+                        "src/StarterPlayer/StarterPlayerScripts/UI/Menu/lol.client.lua"
+                      ]
                     }
                   ]
                 },

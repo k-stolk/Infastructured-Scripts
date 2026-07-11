@@ -6,7 +6,6 @@ local Menu = MainMenu:WaitForChild("Menu")
 local MenuToggle = require(ReplicatedStorage.UI.Toggles.Menu_Toggle)
 
 
-
 local TweenSRV = game:GetService("TweenService")
 
 --Variables
@@ -74,6 +73,6 @@ Menu.Continue.TriggerPoint.MouseButton1Up:Connect(function()
 		HvrSTween:Play()
 		HvrStrokeSTween:Play()
 		HvrTextSTween:Play()
-		MenuToggle.hide(86400)
+		MenuToggle.hide(86400,5)
 	end
 end)

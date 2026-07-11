@@ -1,4 +1,7 @@
 local module = {}
+local teleport = {}
+
+print("lolz")
 
 --Services
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -16,6 +19,7 @@ local player = game:GetService("Players").LocalPlayer
 local camera = workspace.CurrentCamera
 local Menu = player.PlayerGui:WaitForChild("MainMenu").BG
 local Top_bar_Toggle = require(ReplicatedStorage.UI.Toggles.Top_bar_Toggle)
+local PlayerCam = Player.Character.Head.CFrame
 
 --Tween Info
 
@@ -101,27 +105,50 @@ function module.show()
 	coroutine.resume(DopamineCamera)
 end
 
-function module.hide(waitT)
-	player.Character:MoveTo(Vector3.new(70.344, 14.464, 512.401))
+function module.hide(waitT, spawn)
+	if spawn == 1 then
+		teleport = Vector3.new(0, 0, 0)
+	elseif spawn == 2 then
+		teleport = Vector3.new(0, 0, 1)
+	elseif spawn == 3 then
+		teleport = Vector3.new(73.024, 15.5, 526)
+	elseif spawn == 4 then
+		teleport = Vector3.new(73, 15.5, 045)
+	elseif spawn == 5 then
+		teleport = Vector3.new(73.024, 15.5, 526.045)
+	end
+	player.Character:MoveTo(teleport - Vector3.new(0, 0, 10))
 	print("bi")
-	Tween:Create(camera, CameraTween, { CFrame = CFrame.new(70.344, 14.464, 522.401) }):Play()
+	Tween:Create(camera, CameraTween, { CFrame = PlayerCam }):Play()
+
+	player.Character:MoveTo(teleport + Vector3.new(0, 500, 0) - Vector3.new(0, 0, 10))
 
 	CameraOutTwn:Play()
 	coroutine.close(CloudDance)
 	coroutine.close(DopamineCamera)
 	AudioOutTween:Play()
-	BGRevealTwn:Play()
 
 	QuickOUTTWEENR:Play()
 
+	if waitT >= 2.5 then
+		BGRevealTwn:Play()
+	end
+
 	task.wait(waitT)
 
-	player.Character:MoveTo(Vector3.new(70.344, 34.464, 512.401))
+	if waitT <= 2.5 then
+		task.wait(0.5)
+	end
+
+	player.Character:MoveTo(teleport + Vector3.new(0, 20, 0) - Vector3.new(0, 0, 10))
 	Tween:Create(Menu, MenuFrameTween, { BackgroundTransparency = 1 }):Play()
 	task.wait(1)
+	camera.CFrame = PlayerCam
 	camera.CameraType = Enum.CameraType.Custom
+	camera.CFrame = PlayerCam
 	Top_bar_Toggle.Show()
 	Music.Playing = false
+	print(PlayerCam)
 
 	print("yas")
 end

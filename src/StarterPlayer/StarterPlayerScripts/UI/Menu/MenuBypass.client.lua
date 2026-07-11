@@ -3,8 +3,8 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Tween = game:GetService("TweenService")
 local camera = workspace.CurrentCamera
 local player = game:GetService("Players").LocalPlayer
-
 local Menu = player.PlayerGui:WaitForChild("MainMenu").BG
+local MenuToggle = require(ReplicatedStorage.UI.Toggles.Menu_Toggle)
 
 local MenuTog = require(ReplicatedStorage.UI.Toggles.Menu_Toggle)
 local Top_bar_Toggle = require(ReplicatedStorage.UI.Toggles.Top_bar_Toggle)
@@ -19,17 +19,6 @@ end)
 
 Inposs.InputBegan:Connect(function()
 	if Inposs:IsKeyDown(Enum.KeyCode.B) and Inposs:IsKeyDown(Enum.KeyCode.Y) then
-		local workspaceplayerhead = workspace:WaitForChild(tostring(player)).Head
-		local target = workspaceplayerhead.CFrame
-		player.Character:MoveTo(Vector3.new(70.344, 14.464, 512.401))
-		print("bi")
-		Tween:Create(camera, CameraTween, { CFrame = CFrame.new(70.344, 14.464, 522.401) }):Play()
-		coroutine.resume(menutoggle)
-		task.wait(2)
-		player.Character:MoveTo(Vector3.new(70.344, 34.464, 512.401))
-		Tween:Create(Menu, MenuFrameTween, { BackgroundTransparency = 1 }):Play()
-		task.wait(1)
-		camera.CameraType = Enum.CameraType.Custom
-		Top_bar_Toggle.Show()
+		MenuToggle.hide(2,5)
 	end
 end)
