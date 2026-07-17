@@ -19,7 +19,6 @@ local player = game:GetService("Players").LocalPlayer
 local camera = workspace.CurrentCamera
 local Menu = player.PlayerGui:WaitForChild("MainMenu").BG
 local Top_bar_Toggle = require(ReplicatedStorage.UI.Toggles.Top_bar_Toggle)
-local PlayerCam = Player.Character.Head.CFrame
 
 --Tween Info
 
@@ -115,20 +114,29 @@ function module.hide(waitT, spawn)
 	elseif spawn == 4 then
 		teleport = Vector3.new(73, 15.5, 045)
 	elseif spawn == 5 then
-		teleport = Vector3.new(73.024, 15.5, 526.045)
+		teleport = Vector3.new(73.024, 15.492, 516.045)
 	end
-	player.Character:MoveTo(teleport - Vector3.new(0, 0, 10))
+	player.Character:MoveTo(teleport)
+	task.wait(1)
+	local PlayerCam = Player.Character.Head.CFrame * CFrame.new(0, 3.236, 12.075)
+	 * CFrame.Angles(math.rad(-15), math.rad(0), math.rad(0))
+
+	print("Humanoid"..tostring(Player.Character.Head.CFrame))
+	--game.Workspace.k_stolk.HumanoidRootPart.CFrame.
+	task.wait(1)
 	print("bi")
-	Tween:Create(camera, CameraTween, { CFrame = PlayerCam }):Play()
 
-	player.Character:MoveTo(teleport + Vector3.new(0, 500, 0) - Vector3.new(0, 0, 10))
+	Tween:Create(camera, CameraTweenOUT, { CFrame = PlayerCam }):Play()
 
-	CameraOutTwn:Play()
+	--CameraOutTwn:Play()
 	coroutine.close(CloudDance)
 	coroutine.close(DopamineCamera)
 	AudioOutTween:Play()
 
 	QuickOUTTWEENR:Play()
+	player.Character:MoveTo(teleport + Vector3.new(0,20,0))
+	player.Character.HumanoidRootPart.Anchored = true
+	
 
 	if waitT >= 2.5 then
 		BGRevealTwn:Play()
@@ -137,18 +145,17 @@ function module.hide(waitT, spawn)
 	task.wait(waitT)
 
 	if waitT <= 2.5 then
-		task.wait(0.5)
+		task.wait(1)
 	end
 
-	player.Character:MoveTo(teleport + Vector3.new(0, 20, 0) - Vector3.new(0, 0, 10))
+	player.Character.HumanoidRootPart.Anchored = false
 	Tween:Create(Menu, MenuFrameTween, { BackgroundTransparency = 1 }):Play()
 	task.wait(1)
-	camera.CFrame = PlayerCam
 	camera.CameraType = Enum.CameraType.Custom
 	camera.CFrame = PlayerCam
 	Top_bar_Toggle.Show()
 	Music.Playing = false
-	print(PlayerCam)
+	print("PlayerCam"..tostring(PlayerCam))
 
 	print("yas")
 end
