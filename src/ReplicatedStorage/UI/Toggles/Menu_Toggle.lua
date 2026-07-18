@@ -33,7 +33,7 @@ local InAnimINF = TweenInfo.new(1, Enum.EasingStyle.Quint, Enum.EasingDirection.
 local QuickINTWEENR = Tween:Create(MMMenu, QuickINTWEEN, { GroupTransparency = 0 })
 local QuickOUTTWEENR = Tween:Create(MMMenu, QuickINTWEEN, { GroupTransparency = 1 })
 local AudioInTween = Tween:Create(Music, InAnimINF, { PlaybackSpeed = 0.97 })
-local AudioOutTween = Tween:Create(Music, InAnimINF, { PlaybackSpeed = 0 })
+local AudioOutTween = Tween:Create(Music, CameraTweenOUT, { PlaybackSpeed = 0 })
 local CloudINTWEEN = Tween:Create(MMMenu.Logo.Cloud, CloudTween, { Size = UDim2.new(0.877, 0, 1.38, 0) })
 local CloudOUTTWEEN = Tween:Create(MMMenu.Logo.Cloud, CloudTween, { Size = UDim2.new(0.457, 0, 1.38, 0) })
 local BGRevealTwn = Tween:Create(MMenu.BG, InAnimINF, { BackgroundTransparency = 0 })
@@ -106,37 +106,32 @@ end
 
 function module.hide(waitT, spawn)
 	if spawn == 1 then
-		teleport = Vector3.new(0, 0, 0)
+		teleport = Vector3.new(251.885, 15.364, 495.876)
 	elseif spawn == 2 then
-		teleport = Vector3.new(0, 0, 1)
+		teleport = Vector3.new(72.11, 15.491, 188.043)
 	elseif spawn == 3 then
-		teleport = Vector3.new(73.024, 15.5, 526)
+		teleport = Vector3.new(227.361, 14.331, -245.66)
 	elseif spawn == 4 then
-		teleport = Vector3.new(73, 15.5, 045)
+		teleport = Vector3.new(-36.424, 14, -496.437)
 	elseif spawn == 5 then
 		teleport = Vector3.new(73.024, 15.492, 516.045)
 	end
 	player.Character:MoveTo(teleport)
-	task.wait(1)
-	local PlayerCam = Player.Character.Head.CFrame * CFrame.new(0, 3.236, 12.075)
-	 * CFrame.Angles(math.rad(-15), math.rad(0), math.rad(0))
+	local PlayerCam = Player.Character.Head.CFrame
+		* CFrame.new(0, 3.236, 12.075)
+		* CFrame.Angles(math.rad(-15), math.rad(0), math.rad(0))
 
-	print("Humanoid"..tostring(Player.Character.Head.CFrame))
-	--game.Workspace.k_stolk.HumanoidRootPart.CFrame.
-	task.wait(1)
+	print("Humanoid" .. tostring(Player.Character.Head.CFrame))
 	print("bi")
 
-	Tween:Create(camera, CameraTweenOUT, { CFrame = PlayerCam }):Play()
-
-	--CameraOutTwn:Play()
 	coroutine.close(CloudDance)
 	coroutine.close(DopamineCamera)
 	AudioOutTween:Play()
+	Tween:Create(camera, CameraTweenOUT, { CFrame = PlayerCam }):Play()
 
 	QuickOUTTWEENR:Play()
-	player.Character:MoveTo(teleport + Vector3.new(0,20,0))
+	player.Character:MoveTo(teleport + Vector3.new(0, 20, 0))
 	player.Character.HumanoidRootPart.Anchored = true
-	
 
 	if waitT >= 2.5 then
 		BGRevealTwn:Play()
@@ -155,7 +150,7 @@ function module.hide(waitT, spawn)
 	camera.CFrame = PlayerCam
 	Top_bar_Toggle.Show()
 	Music.Playing = false
-	print("PlayerCam"..tostring(PlayerCam))
+	print("PlayerCam" .. tostring(PlayerCam))
 
 	print("yas")
 end

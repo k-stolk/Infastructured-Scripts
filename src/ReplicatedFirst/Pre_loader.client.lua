@@ -18,6 +18,7 @@ local loadingScreen = ReplicatedFirst:FindFirstChild("Preloading")
 local UI = ReplicatedStorage:WaitForChild("UI")
 local Toggles = UI:WaitForChild("Toggles")
 local menu = require(Toggles.Menu_Toggle)
+local PlotAsign = require(ReplicatedStorage.Storage.Plot_Asignal)
 
 --Variables
 local DPRESS = 0
@@ -64,12 +65,10 @@ local camerapos = coroutine.create(function()
 		camera.CameraType = Enum.CameraType.Scriptable
 		local posX, posY, posZ = 158.516, 13.535, -856.884
 
-		-- 2. Your exact Orientation angles (converted to radians)
 		local rotX = math.rad(18.115)
 		local rotY = math.rad(135.936)
 		local rotZ = math.rad(0)
 
-		-- 3. Combine them effortlessly
 		camera.CFrame = CFrame.new(posX, posY, posZ) * CFrame.fromOrientation(rotX, rotY, rotZ)
 
 		task.wait(1)
@@ -127,6 +126,18 @@ if loadingScreen then
 	--workspace.k_stolk.Head.CFrame.char
 
 	BgReveal:Play()
+
+	--start of afterload
+
+	for plot, SavPlayer in ipairs(PlotAsign) do
+		if SavPlayer == "nix" then
+			PlotAsign[player.Name] = plot
+			print("Player asigned to plot "..tostring(plot))
+			break
+		end
+	end
+	
+	print(PlotAsign)
 
 	task.wait(5)
 	print("waited")

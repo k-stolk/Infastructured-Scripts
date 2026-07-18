@@ -6,15 +6,12 @@ Templates.UserdataTEMP = {
 		FirstJoin = "",
 		IsCool = false,
 		DoneTutorial = false,
-		Day = 0
 	},
-	
 	Saves = {
-		
-		SaveName = "",
-		CompanyName = "",
-		
-		Save1 = {
+
+		LastUsedSave = "nix",
+
+		SaveNil = {
 			
 			Stats = {
 				

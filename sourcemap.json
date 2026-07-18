@@ -69,6 +69,19 @@
               ]
             }
           ]
+        },
+        {
+          "name": "Storage",
+          "className": "Folder",
+          "children": [
+            {
+              "name": "Plot_Asignal",
+              "className": "ModuleScript",
+              "filePaths": [
+                "src/ReplicatedStorage/Storage/Plot_Asignal.lua"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -118,6 +131,13 @@
                   "className": "Script",
                   "filePaths": [
                     "src/ServerScriptService/Primary_Systems/Load_in/Load_in.server.lua"
+                  ]
+                },
+                {
+                  "name": "Save",
+                  "className": "ModuleScript",
+                  "filePaths": [
+                    "src/ServerScriptService/Primary_Systems/Load_in/Save.lua"
                   ]
                 }
               ]
