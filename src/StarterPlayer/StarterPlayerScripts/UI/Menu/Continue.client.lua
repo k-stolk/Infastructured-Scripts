@@ -1,13 +1,10 @@
 local Player = game:GetService("Players").LocalPlayer
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local ServerScriptService = game:GetService("ServerScriptService")
 local PlayerGUI = Player.PlayerGui
 local MainMenu = PlayerGUI:WaitForChild("MainMenu")
 local Menu = MainMenu:WaitForChild("Menu")
 local MenuToggle = require(ReplicatedStorage.UI.Toggles.Menu_Toggle)
 local PAsign = require(ReplicatedStorage.Storage.Plot_Asignal)
-local UsrData = require(ServerScriptService.Primary_Systems.Data.Get_user_data)
-local Playerdata = UsrData.get(Player)
 
 
 local TweenSRV = game:GetService("TweenService")
@@ -78,12 +75,6 @@ Menu.Continue.TriggerPoint.MouseButton1Up:Connect(function()
 		HvrStrokeSTween:Play()
 		HvrTextSTween:Play()
 		MenuToggle.hide(PAsign[Player.Name],1)
-
-		if Playerdata.Saves.LastUsedSave == "nix" then
-			print("new save")
-		else
-			MainMenu.Menu.Continue.Topnbottom.Save.Text = Playerdata.Saves.LastUsedSave
-		end
 
 	end
 end)

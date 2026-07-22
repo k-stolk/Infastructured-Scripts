@@ -23,6 +23,19 @@
       "className": "ReplicatedStorage",
       "children": [
         {
+          "name": "Storage",
+          "className": "Folder",
+          "children": [
+            {
+              "name": "Plot_Asignal",
+              "className": "ModuleScript",
+              "filePaths": [
+                "src/ReplicatedStorage/Storage/Plot_Asignal.lua"
+              ]
+            }
+          ]
+        },
+        {
           "name": "Systems",
           "className": "Folder",
           "filePaths": [
@@ -65,20 +78,14 @@
                   "filePaths": [
                     "src/ReplicatedStorage/UI/Toggles/Top_bar_Toggle.lua"
                   ]
+                },
+                {
+                  "name": "Menu_Saves_Toggle",
+                  "className": "ModuleScript",
+                  "filePaths": [
+                    "src/ReplicatedStorage/UI/Toggles/Menu_Saves_Toggle.lua"
+                  ]
                 }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Storage",
-          "className": "Folder",
-          "children": [
-            {
-              "name": "Plot_Asignal",
-              "className": "ModuleScript",
-              "filePaths": [
-                "src/ReplicatedStorage/Storage/Plot_Asignal.lua"
               ]
             }
           ]
@@ -275,6 +282,13 @@
                       "className": "LocalScript",
                       "filePaths": [
                         "src/StarterPlayer/StarterPlayerScripts/UI/Top_bar/Build_mode.client.lua"
+                      ]
+                    },
+                    {
+                      "name": "Menu",
+                      "className": "LocalScript",
+                      "filePaths": [
+                        "src/StarterPlayer/StarterPlayerScripts/UI/Top_bar/Menu.client.lua"
                       ]
                     }
                   ]

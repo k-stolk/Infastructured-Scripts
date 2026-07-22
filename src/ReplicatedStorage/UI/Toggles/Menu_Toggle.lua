@@ -92,6 +92,8 @@ end)
 Camera.CameraType = Enum.CameraType.Scriptable
 
 function module.show()
+	camera.CameraType = Enum.CameraType.Scriptable
+	Top_bar_Toggle.Hide()
 	BGHideTwn:Play()
 	InAnim:Play()
 	QuickINTWEENR:Play()
