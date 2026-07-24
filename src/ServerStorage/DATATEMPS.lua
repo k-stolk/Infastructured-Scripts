@@ -9,7 +9,7 @@ Templates.UserdataTEMP = {
 	},
 	Saves = {
 
-		LastUsedSave = "nix",
+		Selected = "nix",
 
 		SaveNil = {
 			
@@ -23,7 +23,7 @@ Templates.UserdataTEMP = {
 				},
 
 				CompanyStats = {
-					
+					CompanyIcon = 135634738120519,
 					
 					Day = 0,
 					Reputation = 0,

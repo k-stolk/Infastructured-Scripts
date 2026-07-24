@@ -66,6 +66,10 @@ end)
 
 Menu.Saves.TriggerPoint.MouseButton1Up:Connect(function()
 	print("MOUSELEAVE")
+		SavesToggle.Show()
+	Menu.Saves.TriggerPoint.Interactable = false
+	Menu.EtcTrigger.Interactable = true
+	
 	if Hover == false then
 		HvrETween:Play()
 		HvrStrokeETween:Play()
@@ -74,9 +78,6 @@ Menu.Saves.TriggerPoint.MouseButton1Up:Connect(function()
 		HvrSTween:Play()
 		HvrStrokeSTween:Play()
 		HvrTextSTween:Play()
-		SavesToggle.Show()
-		Menu.Saves.TriggerPoint.Interactable = false
-		Menu.EtcTrigger.Interactable = true
 	end
 end)
 

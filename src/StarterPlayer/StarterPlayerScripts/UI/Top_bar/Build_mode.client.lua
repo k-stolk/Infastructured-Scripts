@@ -1,5 +1,7 @@
 local Player = game.Players.LocalPlayer
 local Tween = game:GetService("TweenService")
+local Workspace = game:GetService("Workspace")
+local Tooltip = require(Workspace.Rojo.Plugin.App.Components.Tooltip)
 
 local PlayerGui = Player.PlayerGui
 
@@ -16,15 +18,21 @@ local hvrSound = Button.UIButtonHvr
 local TweenInfuh = TweenInfo.new(0.5,Enum.EasingStyle.Quart,Enum.EasingDirection.Out)
 local TweenInfuhHVR = TweenInfo.new(0.1,Enum.EasingStyle.Quad,Enum.EasingDirection.In)
 local state = false
+local Hover = false
+
+
 
 Current.Button.MouseEnter:Connect(function()
+	Current.Tooltip.GroupTransparency = 1
+	Hover = true
 	
 	if state == false then
 		
 		Tween:Create(Button,TweenInfuhHVR,{
 			BackgroundTransparency = 0.6
 		}):Play()
-		
+
+
 	elseif state == true then
 		
 		Tween:Create(Button,TweenInfuhHVR,{
@@ -32,6 +40,19 @@ Current.Button.MouseEnter:Connect(function()
 		}):Play()
 	
 	end
+
+	task.wait(1)
+	if Hover == true then
+		Current.Tooltip.Visible = true
+	Tween:Create(Current.Tooltip, TweenInfuhHVR, {
+		GroupTransparency = 0.3,
+		Position = UDim2.fromOffset(21, 48)
+	}):Play()
+
+	end
+
+	
+
 	
 	hvrSound.TimePosition = 0
 	hvrSound.Playing = true
@@ -42,6 +63,13 @@ Current.Button.MouseEnter:Connect(function()
 end)
 
 Current.Button.MouseLeave:Connect(function()
+
+	Hover = false
+
+		Tween:Create(Current.Tooltip, TweenInfuhHVR, {
+		GroupTransparency = 1,
+		Position = UDim2.fromOffset(21, 40)
+	}):Play()
 	
 	if state == false then
 
@@ -57,9 +85,12 @@ Current.Button.MouseLeave:Connect(function()
 
 	end
 
+
 end)
 
 Current.Button.MouseButton1Up:Connect(function()
+	Hover = false
+
 	
 	UpSound.TimePosition = 0
 	UpSound.Playing = true
@@ -85,7 +116,9 @@ Current.Button.MouseButton1Up:Connect(function()
 end)
 
 Current.Button.MouseButton1Down:Connect(function()
+	Hover = false
 	
+
 	DwnSound.TimePosition = 0
 	DwnSound.Playing = true
 	DwnSound.Ended:Connect(function()

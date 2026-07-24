@@ -5,6 +5,7 @@ local Saves =
 
 --TweenInfo
 local BounceyyInTwnInf = TweenInfo.new(1.5, Enum.EasingStyle.Elastic, Enum.EasingDirection.Out)
+local ExponInTwnInf = TweenInfo.new(0.5, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
 
 --Tweens
 local TweenIn = {}
@@ -48,7 +49,7 @@ table.insert(
 for _, Corner in ipairs(UiCorners) do
 	table.insert(
 		TweenIn,
-		TweenSrv:Create(Corner, BounceyyInTwnInf, {
+		TweenSrv:Create(Corner, ExponInTwnInf, {
 			CornerRadius = UDim.new(0.1, 0),
 		})
 	)
@@ -86,7 +87,7 @@ table.insert(
 for _, Corner in ipairs(UiCorners) do
 	table.insert(
 		TweenOut,
-		TweenSrv:Create(Corner, BounceyyInTwnInf, {
+		TweenSrv:Create(Corner, ExponInTwnInf, {
 			CornerRadius = UDim.new(0.5, 0),
 		})
 	)
