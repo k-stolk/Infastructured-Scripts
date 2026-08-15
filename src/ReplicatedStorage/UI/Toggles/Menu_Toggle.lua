@@ -13,7 +13,9 @@ local Camera = workspace.CurrentCamera
 local Player = Players.LocalPlayer
 local PlayerGUI = Player.PlayerGui
 local MMenu = PlayerGUI.MainMenu
-local MMMenu = MMenu.Menu
+local MMMenu = MMenu:WaitForChild("Menu")
+local MStats = MMenu:WaitForChild("Stats")
+local Stats = PlayerGUI.TopBar.Stats
 local Music = game.SoundService:WaitForChild("MenuMusic")
 local player = game:GetService("Players").LocalPlayer
 local camera = workspace.CurrentCamera
@@ -62,7 +64,14 @@ local DopamineTweenOUT2 = Tween:Create(Camera, CameraTween, {
 local DopamineTweenIN = Tween:Create(Camera, CameraTween, {
 	CFrame = CFrame.new(501.86, 108.826, -968.814) * CFrame.fromEulerAnglesXYZ(math.rad(-3.678), math.rad(151.875), 0),
 })
+local StatsOut = Tween:Create(MStats, QuickINTWEEN,
+	{Position = Stats.Position,
+	Size = Stats.Size,})
 
+local StatIn = Tween:Create(MStats, QuickINTWEEN, {
+	Position = UDim2.fromScale(0.523, 0.123),
+	Size = UDim2.fromOffset(400, 16),
+})
 -- Coroutines
 
 local CloudDance = coroutine.create(function()
@@ -88,19 +97,23 @@ local DopamineCamera = coroutine.create(function()
 end)
 
 --Start of script
-
+--hello
 Camera.CameraType = Enum.CameraType.Scriptable
 
 function module.show()
 	camera.CameraType = Enum.CameraType.Scriptable
+	Tween:Create(Stats, QuickINTWEEN, {GroupTransparency = 1}):Play()
+	Tween:Create(MStats, QuickINTWEEN, {GroupTransparency = 0}):Play()
 	Top_bar_Toggle.Hide()
 	BGHideTwn:Play()
 	InAnim:Play()
 	QuickINTWEENR:Play()
 	Music.Playing = true
 	AudioInTween:Play()
+	StatIn:Play()
 
 	task.wait(1)
+
 
 	coroutine.resume(CloudDance)
 	coroutine.resume(DopamineCamera)
@@ -147,7 +160,10 @@ function module.hide(waitT, spawn)
 
 	player.Character.HumanoidRootPart.Anchored = false
 	Tween:Create(Menu, MenuFrameTween, { BackgroundTransparency = 1 }):Play()
+	StatsOut:Play()
 	task.wait(1)
+	Tween:Create(Stats, QuickINTWEEN, {GroupTransparency = 0}):Play()
+	Tween:Create(MStats, QuickINTWEEN, {GroupTransparency = 1}):Play()
 	camera.CameraType = Enum.CameraType.Custom
 	camera.CFrame = PlayerCam
 	Top_bar_Toggle.Show()

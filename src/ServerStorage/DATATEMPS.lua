@@ -9,7 +9,7 @@ Templates.UserdataTEMP = {
 	},
 	Saves = {
 
-		Selected = "nix",
+		Selected = "SaveNil",
 
 		SaveNil = {
 			
@@ -17,8 +17,8 @@ Templates.UserdataTEMP = {
 				
 				PlayerStats = {
 
-					FuglyBux = 0,
-					Experience = 0
+					FuglyBux = 50,
+					Experience = 1
 
 				},
 
@@ -26,7 +26,7 @@ Templates.UserdataTEMP = {
 					CompanyIcon = 135634738120519,
 					
 					Day = 0,
-					Reputation = 0,
+					Reputation = -50,
 					
 
 				}
@@ -43,7 +43,9 @@ Templates.UserdataTEMP = {
 
 	AdditionalInfo = {
 		MessageFromVeryCoolPerson = "WAZAHHHHHHHH"
-	}
+	},
+
+	DataTempVers = 0.1
 
 }
 

@@ -7,6 +7,7 @@ local ServerLoader = ReplicatedStorage:WaitForChild("Events").Load_in
 local PrimarySystems = ServerScriptService:WaitForChild("Primary_Systems")
 local GameData = PrimarySystems:WaitForChild("Data")
 local UserDataRetrival = require(GameData.Get_user_data)
+local StatServc = require(ServerScriptService.Primary_Systems.Services.StatService)
 
 --Variables
 local GudService = false
@@ -23,6 +24,8 @@ ServerLoader.OnServerInvoke = function(Player)
 		print("UserDataRetrival Passed! (" .. tostring(Data[2]) .. ")")
 
 		GudService = true
+
+		StatServc.leaderboardSetup(Player)
 
 		local Comment = Data[3]
 		return GudService, Comment
@@ -41,5 +44,7 @@ ServerLoader.OnServerInvoke = function(Player)
 
 		return GudService
 	end
+
+
 	return GudService
 end

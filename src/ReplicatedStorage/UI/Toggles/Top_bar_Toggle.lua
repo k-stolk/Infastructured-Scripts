@@ -14,7 +14,7 @@ local ShowTW = TweenInfo.new(0.5,Enum.EasingStyle.Exponential,Enum.EasingDirecti
 --ShowTweens
 local ShowSH = TweenSrvc:Create(TopBar["Top shadow"], ShowTW, {Transparency = 0.8})
 local ShowI1 = TweenSrvc:Create(TopBar.Leading, ShowTW, {Position = UDim2.fromOffset(208, 34)})
-local ShowI2 = TweenSrvc:Create(TopBar.TopBar.Center, ShowTW, {Position = UDim2.fromScale(0.387,0)})
+local ShowI2 = TweenSrvc:Create(TopBar.TopBar.Center, ShowTW, {Position = UDim2.fromScale(0.411,2.205)})
 local ShowI3 = TweenSrvc:Create(TopBar.TopBar.Trailing, ShowTW, {Position = UDim2.fromScale(0.812,0)})
 --HideTweens
 local HideSH = TweenSrvc:Create(TopBar["Top shadow"], ShowTW, {Transparency = 1})

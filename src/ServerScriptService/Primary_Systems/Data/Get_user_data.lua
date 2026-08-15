@@ -19,9 +19,14 @@ module.LocalPlayerData = {}
 
 function module.get(Player)
 	local player = tostring(Player.UserId)
-	print("the userID is;"..player)
+	print("the userID is;" .. player)
+
+	repeat
+		task.wait()
+	until Userdata
 
 	local Userinfo = Userdata:GetAsync(player)
+
 	print("User data retrival started")
 
 	if Userinfo == nil then
@@ -35,18 +40,21 @@ function module.get(Player)
 			GudService = true
 			Comment = "New Player!"
 			module.LocalPlayerData[Player] = Userinfo
-			return { Userdata, GudService, Comment }
+			return { Userinfo, GudService, Comment }
 		else
 			GudService = tostring("Script: " .. script.Name .. ".  Couldn't add userdata")
 			print(GudService)
-			return { Userdata, GudService}
+			return { Userinfo, GudService }
 		end
 	else
+		repeat
+			task.wait()
+		until Userinfo
 		module.LocalPlayerData[Player] = Userinfo
-		print("Userdata under: "..tostring(player).."found!. :")
+		print("Userdata under: " .. tostring(player) .. "found!. :")
 		print(Userinfo)
 		GudService = true
-		return { Userdata, GudService }
+		return { Userinfo, GudService }
 	end
 end
 return module
