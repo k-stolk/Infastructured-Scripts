@@ -13,14 +13,14 @@ local ShowTW = TweenInfo.new(0.5,Enum.EasingStyle.Exponential,Enum.EasingDirecti
 
 --ShowTweens
 local ShowSH = TweenSrvc:Create(TopBar["Top shadow"], ShowTW, {Transparency = 0.8})
-local ShowI1 = TweenSrvc:Create(TopBar.Leading, ShowTW, {Position = UDim2.fromOffset(208, 34)})
-local ShowI2 = TweenSrvc:Create(TopBar.TopBar.Center, ShowTW, {Position = UDim2.fromScale(0.411,2.205)})
-local ShowI3 = TweenSrvc:Create(TopBar.TopBar.Trailing, ShowTW, {Position = UDim2.fromScale(0.812,0)})
+local ShowI1 = TweenSrvc:Create(TopBar.Leading, ShowTW, {Position = UDim2.new(UDim.new(0, 214),UDim.new(0, 10))})
+local ShowI2 = TweenSrvc:Create(TopBar.Center, ShowTW, {Position = UDim2.new(UDim.new(0.522, 0),UDim.new(0, 12))})
+local ShowI3 = TweenSrvc:Create(TopBar.Trailing, ShowTW, {Position = UDim2.new(UDim.new(1, -16),UDim.new(0, 10))})
 --HideTweens
 local HideSH = TweenSrvc:Create(TopBar["Top shadow"], ShowTW, {Transparency = 1})
-local HideI1 = TweenSrvc:Create(TopBar.Leading, ShowTW, {Position = UDim2.fromOffset(208, -34)})
-local HideI2 = TweenSrvc:Create(TopBar.TopBar.Center, ShowTW, {Position = UDim2.fromScale(0.387,-1.5)})
-local HideI3 = TweenSrvc:Create(TopBar.TopBar.Trailing, ShowTW, {Position = UDim2.fromScale(0.812,-1.5)})
+local HideI1 = TweenSrvc:Create(TopBar.Leading, ShowTW, {Position = UDim2.new(UDim.new(0, 214),UDim.new(0, -50))})
+local HideI2 = TweenSrvc:Create(TopBar.Center, ShowTW, {Position = UDim2.new(UDim.new(0.522, 0),UDim.new(0, -52))})
+local HideI3 = TweenSrvc:Create(TopBar.Trailing, ShowTW, {Position = UDim2.new(UDim.new(1, -16),UDim.new(0, -50))})
 
 
 

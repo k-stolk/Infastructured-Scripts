@@ -5,7 +5,7 @@ local Tooltip = require(Workspace.Rojo.Plugin.App.Components.Tooltip)
 
 local PlayerGui = Player.PlayerGui
 
-local Current = PlayerGui:WaitForChild("TopBar").TopBar.Center.Center.Building
+local Current = PlayerGui:WaitForChild("TopBar").Center.Building
 
 local Inventory = PlayerGui.Sidebar.inv
 
