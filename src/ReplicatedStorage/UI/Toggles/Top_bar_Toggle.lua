@@ -36,7 +36,7 @@ function module.Show()
     ShowI2:Play()
     task.wait(0.1)
     ShowI3:Play()
-
+    task.wait(0.5)
 end
 
 function module.Hide()
@@ -49,7 +49,6 @@ function module.Hide()
     HideSH:Play()
     task.wait(0.5)
     TopBar.Enabled = false
-
 end
 
 return module
