@@ -194,19 +194,6 @@
       ]
     },
     {
-      "name": "StarterPack",
-      "className": "StarterPack",
-      "children": [
-        {
-          "name": "ModuleScript",
-          "className": "ModuleScript",
-          "filePaths": [
-            "src/StarterPack/ModuleScript.lua"
-          ]
-        }
-      ]
-    },
-    {
       "name": "StarterPlayer",
       "className": "StarterPlayer",
       "children": [
@@ -214,6 +201,13 @@
           "name": "StarterPlayerScripts",
           "className": "StarterPlayerScripts",
           "children": [
+            {
+              "name": "DevTools",
+              "className": "LocalScript",
+              "filePaths": [
+                "src/StarterPlayer/StarterPlayerScripts/DevTools.client.lua"
+              ]
+            },
             {
               "name": "UI",
               "className": "Folder",

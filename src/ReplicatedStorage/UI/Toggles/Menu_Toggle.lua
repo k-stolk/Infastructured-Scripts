@@ -40,10 +40,17 @@ end
 
 local function CloudDance()
 	local CloudTween = TweenInfo.new(15, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut)
+	local T1 = Tween:Create(MMMenu.Logo.Cloud, CloudTween, { Size = UDim2.fromScale(0.877, 1.38) })
+	local T2 = Tween:Create(MMMenu.Logo.Cloud, CloudTween, { Size = UDim2.fromScale(0.457, 1.38) })
+
 	while true do
-		Tween:Create(MMMenu.Logo.Cloud, CloudTween, { Size = UDim2.fromScale(0.877, 1.38) }):Play()
-		task.wait(15)
-		 local T2 = Tween:Create(MMMenu.Logo.Cloud, CloudTween, { Size = UDim2.fromScale(0.457, 1.38) }):Play()
+		T1:Play()
+		print("tween 1 start")
+		local state = T1.Completed:Wait()
+		print("T1 completed with:", state)
+		T2:Play()
+		T2.Completed:Wait()
+		print("tweencomplet")
 	end
 end
 
@@ -178,8 +185,6 @@ function module.show()
 	DopamineCameraTASK = task.spawn(DopamineCamera)
 
 	Tween:Create(MMMenu.Logo.TextLabel, QuickINTWEEN, { Position = UDim2.fromScale(0.393, 0.258) }):Play()
-
-
 end
 
 function module.hide(waitT, spawn)
@@ -203,7 +208,6 @@ function module.hide(waitT, spawn)
 
 	Music:Pause()
 	MStats.Visible = false
-
 end
 
 return module
