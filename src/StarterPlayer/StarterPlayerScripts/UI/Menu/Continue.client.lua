@@ -74,7 +74,7 @@ Menu.Continue.TriggerPoint.MouseButton1Up:Connect(function()
 		HvrSTween:Play()
 		HvrStrokeSTween:Play()
 		HvrTextSTween:Play()
-		MenuToggle.hide(PAsign[Player.Name],1)
+		MenuToggle.hide(1,PAsign.PPlot(Player))
 
 	end
 end)

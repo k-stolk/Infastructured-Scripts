@@ -5,7 +5,9 @@ local Players = game:GetService("Players")
 local Tween = game:GetService("TweenService")
 
 --Infinite Yield generators
-local TopBar = require(game:GetService("ReplicatedStorage").UI.Toggles.Top_bar_Toggle)
+local TransEvent = game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PlayerTrans")
+local PlotAsignal = require(game:GetService('ReplicatedStorage').Storage.Plot_Asignal)
+local TopBar = require(game:GetService('ReplicatedStorage').UI.Toggles.Top_bar_Toggle)
 local Camera = workspace.CurrentCamera
 local Player = Players.LocalPlayer
 local MMenu = Player.PlayerGui:WaitForChild("MainMenu")
@@ -13,6 +15,13 @@ local MMMenu = MMenu:WaitForChild("Menu")
 local MStats = MMenu:WaitForChild("Stats")
 local Stats = Player.PlayerGui.TopBar.Stats
 local Music = game.SoundService:WaitForChild("MenuMusic")
+
+
+TopBar.Hide()
+MMMenu.Continue.Position = UDim2.fromScale(-0.25, 0.829)
+MMMenu.Settings.Position = UDim2.fromScale(-0.25, 0.926)
+MMMenu.Saves.Position = UDim2.fromScale(-0.25, 0.926)
+MMMenu.Logo.BG.BackgroundTransparency = 1
 
 --Logo Element Index
 
@@ -36,6 +45,7 @@ for i = 1, 4 do
 	table.insert(LogoElements, Cloudpart.UIShadow)
 end
 
+TransEvent:FireServer(1)
 --
 
 local function CloudDance()
@@ -83,6 +93,10 @@ end
 local function MainTween(EasingDirection)
 	print("IVE BEEN ACTIVATED")
 	local InAnimINF = TweenInfo.new(1, Enum.EasingStyle.Quint, EasingDirection)
+	local InTweenInf = TweenInfo.new(0.5, Enum.EasingStyle.Quint, EasingDirection)
+	Tween:Create(MMMenu.Logo, InTweenInf, { Size = UDim2.fromScale(1, 0.219), Position = UDim2.fromScale(0, 0.135) })
+		:Play()
+
 	local TweenTargets = {
 		[Enum.EasingDirection.In] = {
 
@@ -105,7 +119,7 @@ local function MainTween(EasingDirection)
 		[Enum.EasingDirection.Out] = {
 
 			CameraTarget = Player.Character.Head.CFrame
-				* CFrame.new(0, 3.236, 12.075)
+				* CFrame.new(0, 3.236, 12.5)
 				* CFrame.Angles(math.rad(-15), math.rad(0), math.rad(0)),
 			LogoBG = 1,
 			FiberLineBG = 1,
@@ -145,6 +159,7 @@ local function MainTween(EasingDirection)
 	--Tweens FibeLines Transparency
 
 	Tween:Create(MMMenu.Logo.BG, InAnimINF, { BackgroundTransparency = TweenTarget.LogoBG }):Play()
+	Tween:Create(MMMenu.Logo.BG, InAnimINF, { BackgroundColor3 = Color3.new(0, 0, 0) }):Play()
 	for _, Line in ipairs(Fiberlines) do
 		Tween:Create(Line, InAnimINF, { BackgroundTransparency = TweenTarget.FiberLineBG }):Play()
 	end
@@ -165,29 +180,73 @@ local function MainTween(EasingDirection)
 	CameraTween.Completed:Wait()
 end
 
+local function Buttons(Show)
+	local Properties = {
+		[true] = {
+			Continue = { Position = UDim2.fromScale(0.058, 0.829) },
+			Settings = { Position = UDim2.fromScale(0.068, 0.926) },
+			Saves = { Position = UDim2.fromScale(0.208, 0.926) },
+		},
+		[false] = {
+			Continue = { Position = UDim2.fromScale(-0.25, 0.829) },
+			Settings = { Position = UDim2.fromScale(-0.25, 0.926) },
+			Saves = { Position = UDim2.fromScale(-0.25, 0.926) },
+		},
+	}
+	local Propt = Properties[Show]
+
+	local TweenInf = TweenInfo.new(0.5, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
+
+	Tween:Create(MMMenu.Continue, TweenInf, Propt.Continue):Play()
+	task.wait(0.1)
+	Tween:Create(MMMenu.Settings, TweenInf, Propt.Settings):Play()
+	task.wait(0.1)
+	Tween:Create(MMMenu.Saves, TweenInf, Propt.Saves):Play()
+end
+
 --Start of script
 
-function module.show()
+function module.show(PreHide)
+	MMenu.Enabled = true
+	MMMenu.Logo.BG.BgGradient.Enabled = true
 	local QuickINTWEEN = TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
 	MStats.Visible = true
 
 	local StatsTwn = Tween:Create(Stats, QuickINTWEEN, { GroupTransparency = 1 })
 	Tween:Create(MStats, QuickINTWEEN, { GroupTransparency = 0 }):Play()
 	StatsTwn:Play()
-	StatsTwn.Completed:Wait()
-
-	TopBar.Hide()
+	if not PreHide then
+		print("YIAY")
+		StatsTwn.Completed:Wait()
+		TopBar.Hide()
+	end
 
 	Music:Resume()
+
+	print("ehrm")
+
 	MainTween(Enum.EasingDirection.In)
 
 	CloudDanceTASK = task.spawn(CloudDance)
 	DopamineCameraTASK = task.spawn(DopamineCamera)
 
 	Tween:Create(MMMenu.Logo.TextLabel, QuickINTWEEN, { Position = UDim2.fromScale(0.393, 0.258) }):Play()
+
+	Buttons(true)
 end
 
-function module.hide(waitT, spawn)
+function module.hide(waitT, SpawnNum)
+	TransEvent:FireServer(1)
+	local SpawnLocation = PlotAsignal.plots[5].TP
+
+	if SpawnNum then
+		SpawnLocation = PlotAsignal.plots[SpawnNum].TP
+	end
+
+	Player.Character:MoveTo(SpawnLocation)
+
+	task.spawn(Buttons, false)
+
 	local QuickINTWEEN = TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.In)
 
 	Tween:Create(MMMenu.Logo.TextLabel, QuickINTWEEN, { Position = UDim2.fromScale(1.393, 0.258) }):Play()
@@ -195,19 +254,34 @@ function module.hide(waitT, spawn)
 	task.cancel(CloudDanceTASK)
 	task.cancel(DopamineCameraTASK)
 
+	print("HEAD CFRAME: "..tostring(Player.Character.Head.CFrame))
+
 	MainTween(Enum.EasingDirection.Out)
+
+	print("CAMERA POS AFTER TWEEN: "..tostring(Camera.CFrame))
+	Player.Character:MoveTo(SpawnLocation + Vector3.new(0, 20, 0))
+	Player.Character.PrimaryPart.Anchored = true
 
 	local StatTween = Tween:Create(MStats, QuickINTWEEN, { GroupTransparency = 1 })
 	Tween:Create(Stats, QuickINTWEEN, { GroupTransparency = 0.3 }):Play()
-	StatTween:Play()
-
-	TopBar.Show()
 
 	StatTween:Play()
+	task.spawn(TopBar.Show)
 	StatTween.Completed:Wait()
 
-	Music:Pause()
+	TransEvent:FireServer(0)
+	Player.Character.PrimaryPart.Anchored = false
+
+	task.wait(1)
+
+	Camera.CameraType = Enum.CameraType.Custom
+
 	MStats.Visible = false
+
+	print("CAMERA POS AFTER script: "..tostring(Camera.CFrame))
+
+	MMenu.Enabled = false
+
 end
 
 return module

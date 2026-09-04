@@ -1,7 +1,8 @@
 --Infineityt yeld gunurttor
 local TweenSrv = game:GetService("TweenService")
-local Saves =
-	game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("MainMenu"):WaitForChild("Menu"):WaitForChild("Saves")
+local Menu = game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("MainMenu"):WaitForChild("Menu")
+local EtcTrigger = game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("MainMenu"):WaitForChild("Menu"):WaitForChild("EtcTrigger")
+local Saves = Menu:WaitForChild("Saves")
 
 --TweenInfo
 local BounceyyInTwnInf = TweenInfo.new(1.5, Enum.EasingStyle.Elastic, Enum.EasingDirection.Out)
@@ -22,6 +23,8 @@ local bounceInTwn = TweenSrv:Create(Saves, BounceyyInTwnInf, {
 	Position = UDim2.fromScale(0.316, 0.926),
 	--{0.516, 0},{0.926, 0}
 })
+
+EtcTrigger.Interactable = false
 
 table.insert(
 	TweenIn,
@@ -105,6 +108,8 @@ function MenuSaves.Show()
 	for _, tween in ipairs(TweenIn) do
 		tween:Play()
 	end
+	bounceInTwn.Completed:Wait()
+	EtcTrigger.Interactable = false
 end
 
 function MenuSaves.Hide()
@@ -113,6 +118,8 @@ function MenuSaves.Hide()
 	end
 	task.wait(0.1)
 	bounceOutTwn:Play()
+	bounceOutTwn.Completed:Wait()
+	EtcTrigger.Interactable = true
 end
 
 return MenuSaves

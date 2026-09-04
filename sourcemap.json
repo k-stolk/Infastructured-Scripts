@@ -166,6 +166,13 @@
                   "filePaths": [
                     "src/ServerScriptService/Primary_Systems/Services/test.lua"
                   ]
+                },
+                {
+                  "name": "TransPlayer",
+                  "className": "Script",
+                  "filePaths": [
+                    "src/ServerScriptService/Primary_Systems/Services/TransPlayer.server.lua"
+                  ]
                 }
               ]
             }
@@ -182,13 +189,6 @@
           "className": "ModuleScript",
           "filePaths": [
             "src/ServerStorage/DATATEMPS.lua"
-          ]
-        },
-        {
-          "name": "Plot Asignal",
-          "className": "ModuleScript",
-          "filePaths": [
-            "src/ServerStorage/Plot Asignal.lua"
           ]
         }
       ]

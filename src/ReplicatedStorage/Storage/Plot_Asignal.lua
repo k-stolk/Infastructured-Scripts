@@ -17,15 +17,21 @@ module.plots = {
 		Assignee = "nix",
 		TP = Vector3.new(-36.424, 14, -496.437),
 	},
+	[5] = {
+		Assignee = "Frito",
+		TP = Vector3.new(73.024, 15.492, 516.045)
+	},
 }
 
 function module.PPlot(Player)
 	for i = 1, 4 do
-        if module.plots[i].Assignee == Player then
-            return i
-        end
+		if module.plots[i].Assignee == Player then
+			return i
+		end
 	end
-    return
+	return
 end
+
+
 
 return module

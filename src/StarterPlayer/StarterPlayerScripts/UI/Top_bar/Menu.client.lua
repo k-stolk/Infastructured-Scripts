@@ -75,8 +75,7 @@ Current.Button.MouseButton1Up:Connect(function()
 		Tween:Create(Button,TweenInfuhHVR,{
 			BackgroundTransparency = 1
 		}):Play()
-
-	MenuTog:show()
+MenuTog.show(false)
 end)
 
 Current.Button.MouseButton1Down:Connect(function()

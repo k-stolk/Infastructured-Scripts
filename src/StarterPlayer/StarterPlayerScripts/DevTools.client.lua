@@ -1,10 +1,9 @@
-local Players = game:GetService("Players")
-local Inposs = game:GetService("UserInputService")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Inposs = game:GetService('UserInputService')
+local Players = game:GetService('Players')
+local ReplicatedStorage = game:GetService('ReplicatedStorage')
+local TweenService = game:GetService('TweenService')
 local Me = Players.LocalPlayer
 local DeveloperGUI = Me.PlayerGui:WaitForChild("Developer")
-local TweenService = game:GetService("TweenService")
-local BasicTweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
 local DevTools = {}
 
 function Notif(Message)
@@ -40,6 +39,20 @@ function DevTools.ShowMenu()
 	Notif("Menu Open")
 end
 
+function DevTools.Trans()
+	Notif("Made you trans")
+	local TransEvent = game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PlayerTrans")
+	TransEvent:FireServer(1)
+	Notif("You're now trans")
+end
+
+function DevTools.UnTrans()
+	Notif("Made you trans")
+	local TransEvent = game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PlayerTrans")
+	TransEvent:FireServer(0)
+	Notif("You're now trans")
+end
+
 Inposs.InputBegan:Connect(function()
 	if Inposs:IsKeyDown(Enum.KeyCode.B) and Inposs:IsKeyDown(Enum.KeyCode.Y) then
 		DevTools.BypassMenu()
@@ -49,5 +62,17 @@ end)
 Inposs.InputBegan:Connect(function()
 	if Inposs:IsKeyDown(Enum.KeyCode.M) and Inposs:IsKeyDown(Enum.KeyCode.R) then
 		DevTools.ShowMenu()
+	end
+end)
+
+Inposs.InputBegan:Connect(function()
+	if Inposs:IsKeyDown(Enum.KeyCode.T) and Inposs:IsKeyDown(Enum.KeyCode.R) then
+		DevTools.Trans()
+	end
+end)
+
+Inposs.InputBegan:Connect(function()
+	if Inposs:IsKeyDown(Enum.KeyCode.T) and Inposs:IsKeyDown(Enum.KeyCode.U) then
+		DevTools.UnTrans()
 	end
 end)
