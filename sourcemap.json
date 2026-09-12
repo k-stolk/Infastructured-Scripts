@@ -73,6 +73,13 @@
                   ]
                 },
                 {
+                  "name": "Menu_Settings_Toggle",
+                  "className": "ModuleScript",
+                  "filePaths": [
+                    "src/ReplicatedStorage/UI/Toggles/Menu_Settings_Toggle.lua"
+                  ]
+                },
+                {
                   "name": "Menu_Toggle",
                   "className": "ModuleScript",
                   "filePaths": [
@@ -161,17 +168,17 @@
                   ]
                 },
                 {
-                  "name": "test",
-                  "className": "ModuleScript",
-                  "filePaths": [
-                    "src/ServerScriptService/Primary_Systems/Services/test.lua"
-                  ]
-                },
-                {
                   "name": "TransPlayer",
                   "className": "Script",
                   "filePaths": [
                     "src/ServerScriptService/Primary_Systems/Services/TransPlayer.server.lua"
+                  ]
+                },
+                {
+                  "name": "test",
+                  "className": "ModuleScript",
+                  "filePaths": [
+                    "src/ServerScriptService/Primary_Systems/Services/test.lua"
                   ]
                 }
               ]

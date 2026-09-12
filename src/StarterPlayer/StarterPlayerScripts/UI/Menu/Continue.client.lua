@@ -2,9 +2,20 @@ local Player = game:GetService("Players").LocalPlayer
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local PlayerGUI = Player.PlayerGui
 local MainMenu = PlayerGUI:WaitForChild("MainMenu")
-local Menu = MainMenu:WaitForChild("Menu")
+local Menu = MainMenu:WaitForChild("Menu"):WaitForChild("Buttons")
 local MenuToggle = require(ReplicatedStorage.UI.Toggles.Menu_Toggle)
 local PAsign = require(ReplicatedStorage.Storage.Plot_Asignal)
+local SettingsToggle = require(ReplicatedStorage.UI.Toggles.Menu_Settings_Toggle)
+local SavesToggles = require(ReplicatedStorage.UI.Toggles.Menu_Saves_Toggle)
+local Error = "nix"
+
+if Player.Name ~= "k_stosk" then
+	Error = "No access!"
+end
+
+if true then
+	Error = "No save loaded"
+end
 
 
 local TweenSRV = game:GetService("TweenService")
@@ -16,8 +27,12 @@ local Hover = false
 local HvrSTweenINF = TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
 local ClckSTweenINF = TweenInfo.new(0.05, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
 local HvrETweenINF = TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+local BAMTweenInf = TweenInfo.new(1, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
 
 --TWINSSSSSS
+
+local ShadowTweenS = TweenSRV:Create(Menu.Continue.UIShadow, HvrSTweenINF, { Transparency = 0.7 })
+local ShadowTweenE = TweenSRV:Create(Menu.Continue.UIShadow, HvrSTweenINF, { Transparency = 0.9 })
 
 local HvrSTween = TweenSRV:Create(Menu.Continue, HvrSTweenINF, { Transparency = 0.8 })
 local HvrETween = TweenSRV:Create(Menu.Continue, HvrETweenINF, { Transparency = 1 })
@@ -41,9 +56,27 @@ local HvrTextETween = TweenSRV:Create(Menu.Continue.Topnbottom.UIPadding, HvrSTw
 	PaddingTop = UDim.new(0.3, 0),
 })
 
+function BihError(Message)
+	Menu.Continue.TriggerPoint.Sound:Play()
+	ClckSTween:Play()
+	Menu.Continue.BackgroundColor3 = Color3.new(1, 0, 0)
+	Menu.Continue.UIShadow.Color = Color3.new(1, 0, 0)
+	Menu.Continue.Topnbottom.TEXT2.Text = tostring(Message)
+	Menu.Continue.Topnbottom.TEXT2.TextTransparency = 0
+	Menu.Continue.Topnbottom.TextButton.TextTransparency = 1
+	task.wait(0.5)
+	TweenSRV:Create(Menu.Continue, BAMTweenInf, { BackgroundColor3 = Color3.fromRGB(169, 169, 169) }):Play()
+	shatween = TweenSRV:Create(Menu.Continue.UIShadow, BAMTweenInf, { Color = Color3.fromRGB(0, 0, 0) })
+	shatween:Play()
+	shatween.Completed:Wait()
+	TweenSRV:Create(Menu.Continue.Topnbottom.TEXT2, HvrETweenINF, { TextTransparency = 1 }):Play()
+	TweenSRV:Create(Menu.Continue.Topnbottom.TextButton, HvrETweenINF, { TextTransparency = 0 }):Play()
+end
+
 Menu.Continue.TriggerPoint.MouseEnter:Connect(function()
 	Hover = true
 	print("MOUSEENTER")
+	ShadowTweenS:Play()
 	HvrSTween:Play()
 	HvrStrokeSTween:Play()
 	HvrTextSTween:Play()
@@ -52,6 +85,7 @@ end)
 Menu.Continue.TriggerPoint.MouseLeave:Connect(function()
 	Hover = false
 	print("MOUSELEAVE")
+	ShadowTweenE:Play()
 	HvrETween:Play()
 	HvrStrokeETween:Play()
 	HvrTextETween:Play()
@@ -71,10 +105,33 @@ Menu.Continue.TriggerPoint.MouseButton1Up:Connect(function()
 		HvrStrokeETween:Play()
 		HvrTextETween:Play()
 	elseif Hover == true then
-		HvrSTween:Play()
-		HvrStrokeSTween:Play()
-		HvrTextSTween:Play()
-		MenuToggle.hide(1,PAsign.PPlot(Player))
+		if Error == "nix" then
+			HvrSTween:Play()
+			HvrStrokeSTween:Play()
+			HvrTextSTween:Play()
 
+			if not Menu.Settings.TriggerPoint.Interactable then
+				task.spawn(function()
+					SettingsToggle.Hide()
+				end)
+			end
+
+			if not Menu.Saves.TriggerPoint.Interactable then
+				task.spawn(function()
+					SavesToggles.Hide()
+				end)
+			end
+
+			MenuToggle.hide(1, PAsign.PPlot(Player))
+		else
+			if Error ~= "nix" then
+				HvrSTween:Play()
+				HvrStrokeSTween:Play()
+				HvrTextSTween:Play()
+				if not shatween or shatween.PlaybackState ~= Enum.PlaybackState.Playing then
+					task.spawn(BihError, Error)
+				end
+			end
+		end
 	end
 end)

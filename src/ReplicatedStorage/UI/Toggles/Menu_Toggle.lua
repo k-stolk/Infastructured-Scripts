@@ -6,8 +6,8 @@ local Tween = game:GetService("TweenService")
 
 --Infinite Yield generators
 local TransEvent = game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PlayerTrans")
-local PlotAsignal = require(game:GetService('ReplicatedStorage').Storage.Plot_Asignal)
-local TopBar = require(game:GetService('ReplicatedStorage').UI.Toggles.Top_bar_Toggle)
+local PlotAsignal = require(game:GetService("ReplicatedStorage").Storage.Plot_Asignal)
+local TopBar = require(game:GetService("ReplicatedStorage").UI.Toggles.Top_bar_Toggle)
 local Camera = workspace.CurrentCamera
 local Player = Players.LocalPlayer
 local MMenu = Player.PlayerGui:WaitForChild("MainMenu")
@@ -16,11 +16,10 @@ local MStats = MMenu:WaitForChild("Stats")
 local Stats = Player.PlayerGui.TopBar.Stats
 local Music = game.SoundService:WaitForChild("MenuMusic")
 
-
 TopBar.Hide()
-MMMenu.Continue.Position = UDim2.fromScale(-0.25, 0.829)
-MMMenu.Settings.Position = UDim2.fromScale(-0.25, 0.926)
-MMMenu.Saves.Position = UDim2.fromScale(-0.25, 0.926)
+MMMenu.Buttons.Continue.Position = UDim2.fromScale(-2, 0)
+MMMenu.Buttons.Settings.Position = UDim2.fromScale(-1.063, 0.734)
+MMMenu.Buttons.Saves.Position = UDim2.fromScale(-1.641, 0.734)
 MMMenu.Logo.BG.BackgroundTransparency = 1
 
 --Logo Element Index
@@ -183,25 +182,25 @@ end
 local function Buttons(Show)
 	local Properties = {
 		[true] = {
-			Continue = { Position = UDim2.fromScale(0.058, 0.829) },
-			Settings = { Position = UDim2.fromScale(0.068, 0.926) },
-			Saves = { Position = UDim2.fromScale(0.208, 0.926) },
+			Continue = { Position = UDim2.fromScale(0, 0) },
+			Settings = { Position = UDim2.fromScale(0.063, 0.734) },
+			Saves = { Position = UDim2.fromScale(0.641, 0.734) },
 		},
 		[false] = {
-			Continue = { Position = UDim2.fromScale(-0.25, 0.829) },
-			Settings = { Position = UDim2.fromScale(-0.25, 0.926) },
-			Saves = { Position = UDim2.fromScale(-0.25, 0.926) },
+			Continue = { Position = UDim2.fromScale(-2, 0) },
+			Settings = { Position = UDim2.fromScale(-1.063, 0.734) },
+			Saves = { Position = UDim2.fromScale(-1.641, 0.734) },
 		},
 	}
 	local Propt = Properties[Show]
 
 	local TweenInf = TweenInfo.new(0.5, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
 
-	Tween:Create(MMMenu.Continue, TweenInf, Propt.Continue):Play()
+	Tween:Create(MMMenu.Buttons.Continue, TweenInf, Propt.Continue):Play()
 	task.wait(0.1)
-	Tween:Create(MMMenu.Settings, TweenInf, Propt.Settings):Play()
+	Tween:Create(MMMenu.Buttons.Settings, TweenInf, Propt.Settings):Play()
 	task.wait(0.1)
-	Tween:Create(MMMenu.Saves, TweenInf, Propt.Saves):Play()
+	Tween:Create(MMMenu.Buttons.Saves, TweenInf, Propt.Saves):Play()
 end
 
 --Start of script
@@ -254,20 +253,13 @@ function module.hide(waitT, SpawnNum)
 	task.cancel(CloudDanceTASK)
 	task.cancel(DopamineCameraTASK)
 
-	print("HEAD CFRAME: "..tostring(Player.Character.Head.CFrame))
+	print("HEAD CFRAME: " .. tostring(Player.Character.Head.CFrame))
 
 	MainTween(Enum.EasingDirection.Out)
 
-	print("CAMERA POS AFTER TWEEN: "..tostring(Camera.CFrame))
+	print("CAMERA POS AFTER TWEEN: " .. tostring(Camera.CFrame))
 	Player.Character:MoveTo(SpawnLocation + Vector3.new(0, 20, 0))
 	Player.Character.PrimaryPart.Anchored = true
-
-	local StatTween = Tween:Create(MStats, QuickINTWEEN, { GroupTransparency = 1 })
-	Tween:Create(Stats, QuickINTWEEN, { GroupTransparency = 0.3 }):Play()
-
-	StatTween:Play()
-	task.spawn(TopBar.Show)
-	StatTween.Completed:Wait()
 
 	TransEvent:FireServer(0)
 	Player.Character.PrimaryPart.Anchored = false
@@ -276,12 +268,18 @@ function module.hide(waitT, SpawnNum)
 
 	Camera.CameraType = Enum.CameraType.Custom
 
+	local StatTween = Tween:Create(MStats, QuickINTWEEN, { GroupTransparency = 1 })
+	Tween:Create(Stats, QuickINTWEEN, { GroupTransparency = 0.3 }):Play()
+
+	StatTween:Play()
+	task.spawn(TopBar.Show)
+	StatTween.Completed:Wait()
+
 	MStats.Visible = false
 
-	print("CAMERA POS AFTER script: "..tostring(Camera.CFrame))
+	print("CAMERA POS AFTER script: " .. tostring(Camera.CFrame))
 
 	MMenu.Enabled = false
-
 end
 
 return module

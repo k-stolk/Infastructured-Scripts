@@ -65,6 +65,7 @@ Current.Button.MouseLeave:Connect(function()
 end)
 
 Current.Button.MouseButton1Up:Connect(function()
+	Current.Button.Interactable = false
 	Hover = false
 	UpSound.TimePosition = 0
 	UpSound.Playing = true
@@ -72,16 +73,16 @@ Current.Button.MouseButton1Up:Connect(function()
 		UpSound.Playing = false
 	end)
 
-		Tween:Create(Button,TweenInfuhHVR,{
-			BackgroundTransparency = 1
-		}):Play()
-MenuTog.show(false)
+	Tween:Create(Button, TweenInfuhHVR, {
+		BackgroundTransparency = 1,
+	}):Play()
+	MenuTog.show(false)
+	Current.Button.Interactable = true
 end)
 
 Current.Button.MouseButton1Down:Connect(function()
 	Hover = false
 
-	
 	DwnSound.TimePosition = 0
 	DwnSound.Playing = true
 	DwnSound.Ended:Connect(function()
