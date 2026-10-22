@@ -2,7 +2,7 @@
 local Datastore = game:GetService("DataStoreService")
 
 --Infinite yield generators
-local TemplatesINTS = game.ServerStorage:WaitForChild("DATATEMPS")
+local TemplatesINTS = game:GetService("ReplicatedStorage"):WaitForChild("Storage"):WaitForChild("DATATEMPS")
 
 --Requirements
 local Userdata = Datastore:GetDataStore("UserData")

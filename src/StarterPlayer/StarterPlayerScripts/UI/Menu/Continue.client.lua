@@ -3,10 +3,10 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local PlayerGUI = Player.PlayerGui
 local MainMenu = PlayerGUI:WaitForChild("MainMenu")
 local Menu = MainMenu:WaitForChild("Menu"):WaitForChild("Buttons")
-local MenuToggle = require(ReplicatedStorage.UI.Toggles.Menu_Toggle)
+local MenuToggle = require(ReplicatedStorage.UI.Menu.Menu)
 local PAsign = require(ReplicatedStorage.Storage.Plot_Asignal)
-local SettingsToggle = require(ReplicatedStorage.UI.Toggles.Menu_Settings_Toggle)
-local SavesToggles = require(ReplicatedStorage.UI.Toggles.Menu_Saves_Toggle)
+local SettingsToggle = require(ReplicatedStorage.UI.Menu.Settings)
+local SavesToggles = require(ReplicatedStorage.UI.Menu.Saves)
 local Error = "nix"
 
 if Player.Name ~= "k_stosk" then

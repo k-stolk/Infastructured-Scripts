@@ -11,6 +11,7 @@ local GudService = false
 local Comment = "Nothing"
 
 --Requests
+local Templates = require(game:GetService("ReplicatedStorage"):WaitForChild("Storage"):WaitForChild("DATATEMPS"))
 local FirstTime = require(LoadIn.First_time)
 local Userdata = Datastore:GetDataStore("UserData")
 
@@ -57,4 +58,36 @@ function module.get(Player)
 		return { Userinfo, GudService }
 	end
 end
+
+function module.SetSave(Player, Save)
+	local player = tostring(Player.UserId)
+	local Userinfo = Userdata:GetAsync(player)
+	Userinfo.Saves.Selected = Save
+	return
+end
+
+function module.MakeSave(Player, SaveData)
+	print(Templates.UserdataTEMP.Saves.SaveNil)
+	Userdata:UpdateAsync(tostring(Player.UserId), function(Data)
+		local SaveName = next(SaveData)
+		print(Data)
+		Data.Saves[SaveName] = SaveData[SaveName]
+		return Data
+	end)
+end
+
+function module.EditSaveName(Player, Names)
+	Userdata:UpdateAsync(tostring(Player.UserId), function(Data)
+		if Data.Saves[Names.newname] then
+			Data.Saves[Names.newname.."(1)"] = Data.Saves[Names.oldname]
+			Data.Saves[Names.oldname] = nil
+		else
+			Data.Saves[Names.newname] = Data.Saves[Names.oldname]
+			Data.Saves[Names.oldname] = nil
+		end
+
+		return Data
+	end)
+end
+
 return module

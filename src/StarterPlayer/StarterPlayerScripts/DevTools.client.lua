@@ -27,14 +27,14 @@ end
 
 function DevTools.BypassMenu()
 	Notif("Bypassing Menu")
-	local MenTog = require(ReplicatedStorage.UI.Toggles.Menu_Toggle)
+	local MenTog = require(ReplicatedStorage.UI.Menu.Menu)
 	MenTog.hide(15, 5)
 	Notif("Menu Bypassed")
 end
 
 function DevTools.ShowMenu()
 	Notif("Opening Menu")
-	local MenTog = require(ReplicatedStorage.UI.Toggles.Menu_Toggle)
+	local MenTog = require(ReplicatedStorage.UI.Menu.Menu)
 	MenTog.show()
 	Notif("Menu Open")
 end
@@ -44,6 +44,10 @@ function DevTools.Trans()
 	local TransEvent = game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PlayerTrans")
 	TransEvent:FireServer(1)
 	Notif("You're now trans")
+end
+
+function DevTools.SavesGet()
+	require(game:GetService("ReplicatedStorage").UI.Menu.Saves).LoadSaves()
 end
 
 function DevTools.UnTrans()
@@ -74,5 +78,11 @@ end)
 Inposs.InputBegan:Connect(function()
 	if Inposs:IsKeyDown(Enum.KeyCode.T) and Inposs:IsKeyDown(Enum.KeyCode.U) then
 		DevTools.UnTrans()
+	end
+end)
+
+Inposs.InputBegan:Connect(function()
+	if Inposs:IsKeyDown(Enum.KeyCode.D) and Inposs:IsKeyDown(Enum.KeyCode.A) then
+		DevTools.SavesGet()
 	end
 end)

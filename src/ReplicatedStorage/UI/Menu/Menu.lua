@@ -7,7 +7,7 @@ local Tween = game:GetService("TweenService")
 --Infinite Yield generators
 local TransEvent = game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PlayerTrans")
 local PlotAsignal = require(game:GetService("ReplicatedStorage").Storage.Plot_Asignal)
-local TopBar = require(game:GetService("ReplicatedStorage").UI.Toggles.Top_bar_Toggle)
+local TopBar = require(game:GetService("ReplicatedStorage").UI.Top_Bar.Top_bar)
 local Camera = workspace.CurrentCamera
 local Player = Players.LocalPlayer
 local MMenu = Player.PlayerGui:WaitForChild("MainMenu")
@@ -201,6 +201,11 @@ local function Buttons(Show)
 	Tween:Create(MMMenu.Buttons.Settings, TweenInf, Propt.Settings):Play()
 	task.wait(0.1)
 	Tween:Create(MMMenu.Buttons.Saves, TweenInf, Propt.Saves):Play()
+end
+
+function SaveShow()
+	MMenu.Stats.GroupTransparency = 0
+	MMMenu.Buttons.Continue.Icon.ImageTransparency = 0
 end
 
 --Start of script

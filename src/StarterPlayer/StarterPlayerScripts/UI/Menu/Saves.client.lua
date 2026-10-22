@@ -1,11 +1,11 @@
 local Player = game:GetService("Players").LocalPlayer
 local PlayerGUI = Player.PlayerGui
-local MainMenu = PlayerGUI:WaitForChild("MainMenu")
-local Menu = MainMenu:WaitForChild("Menu")
+local MainMenuGUI = PlayerGUI:WaitForChild("MainMenu")
+local Menu = MainMenuGUI:WaitForChild("Menu")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Toggles = ReplicatedStorage:WaitForChild("UI"):WaitForChild("Toggles")
-local SettingsToggle = require(Toggles:WaitForChild("Menu_Settings_Toggle"))
-local SavesToggles = require(Toggles:WaitForChild("Menu_Saves_Toggle"))
+local MainMenu = ReplicatedStorage:WaitForChild("UI"):WaitForChild("Menu")
+local SettingsToggle = require(MainMenu:WaitForChild("Settings"))
+local SavesToggles = require(MainMenu:WaitForChild("Saves"))
 
 local TweenSRV = game:GetService("TweenService")
 local Workspace = game:GetService("Workspace")
@@ -67,6 +67,7 @@ end)
 
 Menu.Buttons.Saves.TriggerPoint.MouseButton1Up:Connect(function()
 	print("MOUSELEAVE")
+	require(game:GetService("ReplicatedStorage"):WaitForChild("UI"):WaitForChild("Menu"):WaitForChild("Saves")).LoadSaves()
 
 	if Menu.Buttons.Saves.TriggerPoint.Interactable then
 		if not Menu.Buttons.Settings.TriggerPoint.Interactable then

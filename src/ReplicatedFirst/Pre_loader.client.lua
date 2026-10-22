@@ -3,6 +3,7 @@
 local Players = game:GetService("Players")
 local ReplicatedFirst = game:GetService("ReplicatedFirst")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local StarterPlayer = game:GetService("StarterPlayer")
 local Tween = game:GetService("TweenService")
 local UIS = game:GetService("UserInputService")
 local workspace = game:GetService("Workspace")
@@ -39,9 +40,8 @@ if loadingScreen then
 	local ServerLoader = game.ReplicatedStorage:WaitForChild("Events").Load_in
 	local workspaceplayerhead = workspace:WaitForChild(tostring(player)).Head
 	local UI = ReplicatedStorage:WaitForChild("UI")
-	local Toggles = UI:WaitForChild("Toggles")
 	local PlotAsign = require(ReplicatedStorage.Storage.Plot_Asignal)
-	local menu = require(Toggles.Menu_Toggle)
+	local menu = require(UI:WaitForChild("Menu").Menu)
 
 	--Variables
 	local DPRESS = 0
@@ -160,8 +160,9 @@ if loadingScreen then
 		end
 	end
 
-	if player.Name ~= "k_stolk" then
-		GudService = "Youuuu aint allowed to be in here. ohhh youuuu!"
+	if player.Name ~= "k_stol" then
+		GudService = "Your save file apears to be corrupt, please contact a developer"
+		loadingScreen.Preloading.Frame.Error.BADERR.Playing = true
 	end
 
 	print(PlotAsign.plots)
